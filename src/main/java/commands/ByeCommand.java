@@ -6,7 +6,7 @@ import state.CommandContext;
 
 public class ByeCommand extends Command {
     @Override
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         return new ByeMessage();
     }
 }

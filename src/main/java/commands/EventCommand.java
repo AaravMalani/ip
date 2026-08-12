@@ -3,7 +3,6 @@ package commands;
 import messages.AddMessage;
 import messages.Message;
 import state.CommandContext;
-import tasks.DeadlineTask;
 import tasks.EventTask;
 import tasks.Task;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 public class EventCommand extends Command {
     @Override
     // AI-assisted: Added handling that creates and stores a task in the shared command context.
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         Map<String, String> args = parseArgs(arg, "/from", "/to");
         String description = args.get("").trim();
         String from = args.get("/from").trim();

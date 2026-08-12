@@ -1,5 +1,4 @@
 import commands.CommandHandler;
-import messages.ByeMessage;
 import messages.Message;
 import messages.WelcomeMessage;
 

@@ -11,7 +11,7 @@ import tasks.Task;
 public class UnmarkCommand extends Command {
     @Override
     // AI-assisted: Added handling that marks a one-based task number as not completed.
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         Task task = context.tasks().get(Integer.parseInt(arg) - 1);
         task.unmark();
         return new UnmarkMessage(task);

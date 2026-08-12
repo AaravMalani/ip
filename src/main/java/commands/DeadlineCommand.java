@@ -5,7 +5,6 @@ import messages.Message;
 import state.CommandContext;
 import tasks.DeadlineTask;
 import tasks.Task;
-import tasks.TodoTask;
 
 import java.util.Map;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 public class DeadlineCommand extends Command {
     @Override
     // AI-assisted: Added handling that creates and stores a task in the shared command context.
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         Map<String, String> args = parseArgs(arg, "/by");
         String description = args.get("").trim();
         String by = args.get("/by").trim();

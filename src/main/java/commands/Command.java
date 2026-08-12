@@ -18,7 +18,7 @@ public abstract class Command {
      * @param arg the extra arguments sent by the user. For example, if the user sends "hello world john", arg will be "world john"
      * @return the response to the command
      */
-    abstract Message handle(CommandContext context, String arg);
+    public abstract Message handle(CommandContext context, String arg);
 
     protected Map<String, String> parseArgs(String arg, String... argNames) {
         String[] splits = arg.split(" ");

@@ -10,7 +10,7 @@ import state.CommandContext;
 public class ListCommand extends Command {
     @Override
     // AI-assisted: Added handling that returns the shared tasks as a bullet-point list.
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         return new ListMessage(context.tasks());
     }
 }

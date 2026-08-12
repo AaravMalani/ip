@@ -11,7 +11,7 @@ import tasks.Task;
 public class MarkCommand extends Command {
     @Override
     // AI-assisted: Added handling that marks a one-based task number as completed.
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         Task task = context.tasks().get(Integer.parseInt(arg) - 1);
         task.mark();
         return new MarkMessage(task);

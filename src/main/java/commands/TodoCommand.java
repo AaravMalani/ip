@@ -12,7 +12,7 @@ import tasks.TodoTask;
 public class TodoCommand extends Command {
     @Override
     // AI-assisted: Added handling that creates and stores a task in the shared command context.
-    Message handle(CommandContext context, String arg) {
+    public Message handle(CommandContext context, String arg) {
         Task task = new TodoTask(arg);
         context.tasks().add(task);
         return new AddMessage(task);
