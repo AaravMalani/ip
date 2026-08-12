@@ -25,7 +25,8 @@ public class CommandHandler {
         String commandName = command.split(" ")[0];
         Command commandInstance = CommandRegistry.getCommand(commandName);
         if (commandInstance == null) {
-            return new AddCommand().handle(context, command);
+            // TODO: handle unknown command
+            System.exit(1);
         }
         // In case of no arguments, substring throws an exception
         if (command.length() == commandName.length()) {

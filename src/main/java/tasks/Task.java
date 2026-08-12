@@ -3,11 +3,12 @@ package tasks;
 /**
  * Represents a task entered by the user.
  */
-public class Task {
+public abstract class Task {
     /*
         AI-assisted:
         * Added a task model that stores the task description.
         * Added marked state and display formatting for tasks.
+        * Made Task an abstract base class for todo, deadline, and event tasks.
      */
     private final String description;
     private boolean isMarked;
@@ -22,13 +23,21 @@ public class Task {
     }
 
     /**
-     * Returns this task in the format expected by the list command.
+     * Returns the icon representing whether this task is marked.
      *
-     * @return the task status followed by its description
+     * @return {@code [X]} for a marked task, otherwise {@code [ ]}
      */
-    @Override
-    public String toString() {
-        return (isMarked ? "[X] " : "[ ] ") + description;
+    protected String getMarkedIcon() {
+        return isMarked ? "[X]" : "[ ]";
+    }
+
+    /**
+     * Returns this task's description for subclass display formatting.
+     *
+     * @return the task description
+     */
+    protected String getDescription() {
+        return description;
     }
 
     /**
@@ -44,4 +53,7 @@ public class Task {
     public void unmark() {
         this.isMarked  = false;
     }
+
+    @Override
+    public abstract String toString();
 }

@@ -11,7 +11,9 @@ public class CommandRegistry {
 
     static {
         // AI-assisted: Registered commands for adding and listing session tasks.
-        // The add command is missing since we don't want the 'add' keyword to trigger a command
+        registry.put("deadline", DeadlineCommand.class);
+        registry.put("event", EventCommand.class);
+        registry.put("todo", TodoCommand.class);
         registry.put("bye", ByeCommand.class);
         registry.put("list", ListCommand.class);
         registry.put("mark", MarkCommand.class);
