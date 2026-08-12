@@ -8,14 +8,17 @@ if ($Commands.Count -ne $ExpectedOutputs.Count) {
     throw 'Commands and ExpectedOutputs must contain the same number of items.'
 }
 
-$jdk = Get-ChildItem 'C:\Users\aarav\.jdks' -Directory | Where-Object Name -Match '25' | Select-Object -First 1
-if ($null -eq $jdk) { throw 'Java 25 was not found under C:\Users\aarav\.jdks.' }
+$javacCommand = Get-Command javac -ErrorAction SilentlyContinue
+$javaCommand = Get-Command java -ErrorAction SilentlyContinue
+if ($null -eq $javacCommand -or $null -eq $javaCommand) {
+    throw 'Java 25 must be available on PATH as both javac and java.'
+}
 $outputDirectory = Join-Path $env:TEMP ('test-ui-' + [guid]::NewGuid())
 New-Item -ItemType Directory -Path $outputDirectory | Out-Null
 
 try {
-    $javac = Join-Path $jdk.FullName 'bin\javac.exe'
-    $java = Join-Path $jdk.FullName 'bin\java.exe'
+    $javac = $javacCommand.Source
+    $java = $javaCommand.Source
     $sourceFiles = Get-ChildItem src/main/java -Recurse -Filter *.java | ForEach-Object FullName
     $compilerOutput = & $javac -d $outputDirectory $sourceFiles 2>&1
     if ($LASTEXITCODE -ne 0) {

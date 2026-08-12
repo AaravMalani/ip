@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.MissingArgumentException;
 import messages.Message;
 import state.CommandContext;
 
@@ -44,6 +45,11 @@ public abstract class Command {
             currentArg.deleteCharAt(currentArg.length() - 1);
         }
         map.put(currentArgName, currentArg.toString());
+        for (String argName: argNames) {
+            if (!map.containsKey(argName)) {
+                throw new MissingArgumentException(CommandRegistry.getCommandName(this.getClass()), argName);
+            }
+        }
         return map;
     }
 }

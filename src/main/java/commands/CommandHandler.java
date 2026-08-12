@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.UnknownCommandException;
 import messages.Message;
 import state.CommandContext;
 import tasks.Task;
@@ -25,8 +26,7 @@ public class CommandHandler {
         String commandName = command.split(" ")[0];
         Command commandInstance = CommandRegistry.getCommand(commandName);
         if (commandInstance == null) {
-            // TODO: handle unknown command
-            System.exit(1);
+            throw new UnknownCommandException(command);
         }
         // In case of no arguments, substring throws an exception
         if (command.length() == commandName.length()) {

@@ -99,3 +99,115 @@ added:
 
 So long, and thanks for all the fish.
 ```
+
+## Test case 4: List an empty task list
+
+Aim: Verify that `list` gives a helpful response before any task has been added.
+
+Inputs:
+
+```text
+list
+bye
+```
+
+Expected output pattern:
+
+```text
+(Any Arthur Dent quote)
+
+No tasks to display.
+
+So long, and thanks for all the fish.
+```
+
+## Test case 5: Mark without an index
+
+Aim: Verify that `mark` rejects a missing task index and keeps the session running.
+
+Inputs:
+
+```text
+mark
+bye
+```
+
+Expected output pattern:
+
+```text
+Missing argument from mark: index
+(Any Arthur Dent quote)
+
+So long, and thanks for all the fish.
+```
+
+## Test case 6: Unmark with an invalid index
+
+Aim: Verify that `unmark` rejects a non-numeric index.
+
+Inputs:
+
+```text
+unmark first
+bye
+```
+
+Expected output pattern:
+
+```text
+An invalid argument was passed to the command: first
+(Any Arthur Dent quote)
+
+So long, and thanks for all the fish.
+```
+
+## Test case 7: Mark an out-of-range task index
+
+Aim: Verify that `mark` rejects an index that does not identify a stored task.
+
+Inputs:
+
+```text
+todo read book
+mark 2
+list
+bye
+```
+
+Expected output pattern:
+
+```text
+(Any Arthur Dent quote)
+
+added:
+[T][ ] read book
+
+An invalid argument was passed to the command: 2
+(Any Arthur Dent quote)
+
+(Any Arthur Dent quote)
+
+1. [T][ ] read book
+
+So long, and thanks for all the fish.
+```
+
+## Test case 8: Use an unknown command
+
+Aim: Verify that an unknown command returns an error and does not terminate the session.
+
+Inputs:
+
+```text
+unknown
+bye
+```
+
+Expected output pattern:
+
+```text
+The called command does not exist: unknown
+(Any Arthur Dent quote)
+
+So long, and thanks for all the fish.
+```

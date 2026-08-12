@@ -1,4 +1,6 @@
 import commands.CommandHandler;
+import exceptions.ArthurRuntimeException;
+import messages.ErrorMessage;
 import messages.Message;
 import messages.WelcomeMessage;
 
@@ -53,7 +55,11 @@ public class Executor {
         while (true) {
             flushMessages();
             String input = acceptInput();
-            messages.add(commandHandler.handle(input));
+            try {
+                messages.add(commandHandler.handle(input));
+            } catch (ArthurRuntimeException e) {
+                messages.add(new ErrorMessage(e));
+            }
         }
     }
 }

@@ -8,6 +8,45 @@ $todoQuoteOutput = '(?s)^.*\r?\n\r?\n'
         '^So long, and thanks for all the fish\.$'
     )
 
+$errorQuoteOutput = '(?s)^'
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('list', 'bye') `
+    -ExpectedOutputs @(
+        ($todoQuoteOutput + 'No tasks to display\.$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('mark', 'bye') `
+    -ExpectedOutputs @(
+        ($errorQuoteOutput + 'Missing argument from mark: index\r?\n.*$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('unmark first', 'bye') `
+    -ExpectedOutputs @(
+        ($errorQuoteOutput + 'An invalid argument was passed to the command: first\r?\n.*$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('todo read book', 'mark 2', 'list', 'bye') `
+    -ExpectedOutputs @(
+        ($todoQuoteOutput + 'added:\r?\n\[T\]\[ \] read book$'),
+        ($errorQuoteOutput + 'An invalid argument was passed to the command: 2\r?\n.*$'),
+        ($todoQuoteOutput + '1\. \[T\]\[ \] read book$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('unknown', 'bye') `
+    -ExpectedOutputs @(
+        ($errorQuoteOutput + 'The called command does not exist: unknown\r?\n.*$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
 & .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
     -Commands @('deadline submit report /by Friday', 'list', 'bye') `
     -ExpectedOutputs @(
