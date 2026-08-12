@@ -7,6 +7,7 @@ public class EventTask extends Task {
     // AI-assisted: Added the event task type with from and to dates.
     private final String from;
     private final String to;
+    private static final TaskType TASK_TYPE = TaskType.EVENT;
 
     public EventTask(String description, String from, String to) {
         super(description);
@@ -16,7 +17,7 @@ public class EventTask extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + getMarkedIcon() + " " + getDescription()
+        return TASK_TYPE + getMarkedIcon() + " " + getDescription()
                 + " (from " + from + ", to " + to + ")";
     }
 }

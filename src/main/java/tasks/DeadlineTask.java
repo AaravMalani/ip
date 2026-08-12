@@ -6,6 +6,7 @@ package tasks;
 public class DeadlineTask extends Task {
     // AI-assisted: Added the deadline task type with a by date.
     private final String by;
+    private static final TaskType TASK_TYPE = TaskType.DEADLINE;
 
     public DeadlineTask(String description, String by) {
         super(description);
@@ -14,6 +15,6 @@ public class DeadlineTask extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + getMarkedIcon() + " " + getDescription() + " (by " + by + ")";
+        return TASK_TYPE + getMarkedIcon() + " " + getDescription() + " (by " + by + ")";
     }
 }

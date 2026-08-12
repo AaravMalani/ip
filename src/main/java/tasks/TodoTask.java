@@ -4,6 +4,8 @@ package tasks;
  * Represents a task without a date or time requirement.
  */
 public class TodoTask extends Task {
+    private static final TaskType TASK_TYPE = TaskType.TODO;
+
     // AI-assisted: Added the todo task type and its display format.
     public TodoTask(String description) {
         super(description);
@@ -11,6 +13,6 @@ public class TodoTask extends Task {
 
     @Override
     public String toString() {
-        return "[T]" + getMarkedIcon() + " " + getDescription();
+        return TASK_TYPE + getMarkedIcon() + " " + getDescription();
     }
 }
