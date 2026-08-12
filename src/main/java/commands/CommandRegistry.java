@@ -10,7 +10,10 @@ public class CommandRegistry {
     private static final Map<String, Class<? extends Command>> registry = new HashMap<>();
 
     static {
+        // AI-assisted: Registered commands for adding and listing session tasks.
         registry.put("bye", ByeCommand.class);
+        registry.put("add", AddCommand.class);
+        registry.put("list", ListCommand.class);
     }
 
     public static Command getCommand(String command) {

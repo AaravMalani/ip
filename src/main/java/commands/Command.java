@@ -1,6 +1,7 @@
 package commands;
 
 import messages.Message;
+import state.CommandContext;
 
 /**
  * A command is a message sent by the user to the program
@@ -12,5 +13,5 @@ public abstract class Command {
      * @param arg the extra arguments sent by the user. For example, if the user sends "hello world john", arg will be "world john"
      * @return the response to the command
      */
-    abstract Message handle(String arg);
+    abstract Message handle(CommandContext context, String arg);
 }
