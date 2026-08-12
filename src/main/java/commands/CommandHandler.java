@@ -13,9 +13,16 @@ public class CommandHandler {
      * @return the response to the command
      */
     public Message handle(String command) {
-        if (command.equals("bye")) {
-            return new ByeCommand().handle(command);
+        String commandName = command.split(" ")[0];
+        Command commandInstance = CommandRegistry.getCommand(commandName);
+        if (commandInstance == null) {
+            return new EchoMessage(command);
         }
-        return new EchoMessage(command);
+        // In case of no arguments, substring throws an exception
+        if (command.length() == commandName.length()) {
+            return commandInstance.handle("");
+        }
+        String otherArg = command.substring(commandName.length() + 1);
+        return commandInstance.handle(otherArg);
     }
 }
