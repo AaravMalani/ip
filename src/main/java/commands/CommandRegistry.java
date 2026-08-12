@@ -14,6 +14,8 @@ public class CommandRegistry {
         registry.put("bye", ByeCommand.class);
         registry.put("add", AddCommand.class);
         registry.put("list", ListCommand.class);
+        registry.put("mark", MarkCommand.class);
+        registry.put("unmark", UnmarkCommand.class);
     }
 
     public static Command getCommand(String command) {
