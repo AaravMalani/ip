@@ -1,27 +1,35 @@
+import commands.CommandHandler;
 import messages.ByeMessage;
 import messages.Message;
 import messages.WelcomeMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Executor {
     /** The message queue */
     private final List<Message> messages = new ArrayList<>();
-    /** Stores whether the first message has been printed */
-    private boolean hasPrintedMessage = false;
-
+    /** A horizontal line to separate messages */
     private static final String HORIZONTAL_LINE = "_".repeat(60);
+
+    /** The command handler which converts user input into messages */
+    private final CommandHandler commandHandler = new CommandHandler();
+
+    /** The scanner which reads user input */
+    private final Scanner scanner = new Scanner(System.in);
+
+    private static final String PROMPT = "\t> ";
 
     Executor() {
         messages.add(new WelcomeMessage());
-        messages.add(new ByeMessage());
     }
 
     /**
      * Flushes messages from the message queue
      */
     private void flushMessages() {
+        boolean hasPrintedMessage = false;
         for (Message message : messages) {
             if (!hasPrintedMessage) {
                 hasPrintedMessage = true;
@@ -36,7 +44,17 @@ public class Executor {
         messages.clear();
     }
 
+    /** Accepts user input */
+    private String acceptInput() {
+        System.out.print(PROMPT);
+        return scanner.nextLine();
+    }
+
     public void run() {
-        flushMessages();
+        while (true) {
+            flushMessages();
+            String input = acceptInput();
+            messages.add(commandHandler.handle(input));
+        }
     }
 }
