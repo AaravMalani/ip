@@ -15,7 +15,7 @@ public class UnmarkMessage extends Message {
 
     @Override
     public String toString() {
-        return "unmarked: " + task;
+        return String.format("%s\n\nunmarked:\n%s", getRandomQuote(), task);
     }
 
     @Override
