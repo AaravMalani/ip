@@ -4,14 +4,15 @@ import exceptions.InvalidArgumentException;
 import exceptions.MissingArgumentException;
 import messages.MarkMessage;
 import messages.Message;
+import messages.RemoveMessage;
 import state.CommandContext;
 import tasks.Task;
 
 /**
- * Marks a numbered task as completed.
+ * Removes a task from the shared task list.
  */
-public class MarkCommand extends TaskCommand {
-    private static final String COMMAND_NAME = "mark";
+public class RemoveCommand extends TaskCommand {
+    private static final String COMMAND_NAME = "remove";
     private static final String ARGUMENT_NAME = "index";
 
     @Override
@@ -25,9 +26,9 @@ public class MarkCommand extends TaskCommand {
     }
 
     @Override
-    protected Message handle(CommandContext context, int index) {
-        Task task = context.tasks().get(index);
-        task.mark();
-        return new MarkMessage(task);
+    // AI-assisted: Added handling that creates and stores a task in the shared command context.
+    public Message handle(CommandContext context, int arg) {
+        Task task = context.tasks().remove(arg);
+        return new RemoveMessage(task);
     }
 }

@@ -72,3 +72,31 @@ $errorQuoteOutput = '(?s)^'
         ($todoQuoteOutput + '1\. \[T\]\[ \] submit assignment$'),
         '^So long, and thanks for all the fish\.$'
     )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('todo write report', 'todo revise notes', 'remove 1', 'list', 'bye') `
+    -ExpectedOutputs @(
+        ($todoQuoteOutput + 'added:\r?\n\[T\]\[ \] write report$'),
+        ($todoQuoteOutput + 'added:\r?\n\[T\]\[ \] revise notes$'),
+        ($todoQuoteOutput + 'removed:\r?\n\[T\]\[ \] write report$'),
+        ($todoQuoteOutput + '1\. \[T\]\[ \] revise notes$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('remove', 'bye') `
+    -ExpectedOutputs @(
+        ($errorQuoteOutput + 'Missing argument from remove: index\r?\n.*$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+& .codex/skills/test-ui/scripts/run-ui-tests.ps1 `
+    -Commands @('todo read book', 'remove one', 'remove 0', 'remove 2', 'list', 'bye') `
+    -ExpectedOutputs @(
+        ($todoQuoteOutput + 'added:\r?\n\[T\]\[ \] read book$'),
+        ($errorQuoteOutput + 'An invalid argument was passed to the command: one\r?\n.*$'),
+        ($errorQuoteOutput + 'An invalid argument was passed to the command: 0\r?\n.*$'),
+        ($errorQuoteOutput + 'An invalid argument was passed to the command: 2\r?\n.*$'),
+        ($todoQuoteOutput + '1\. \[T\]\[ \] read book$'),
+        '^So long, and thanks for all the fish\.$'
+    )

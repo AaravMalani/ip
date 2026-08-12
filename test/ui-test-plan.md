@@ -211,3 +211,103 @@ The called command does not exist: unknown
 
 So long, and thanks for all the fish.
 ```
+
+## Test case 9: Remove a task and renumber the remaining tasks
+
+Aim: Verify that `remove` confirms the removed task and that `list` renumbers
+the remaining tasks.
+
+Inputs:
+
+```text
+todo write report
+todo revise notes
+remove 1
+list
+bye
+```
+
+Expected output pattern:
+
+```text
+(Any Arthur Dent quote)
+
+added:
+[T][ ] write report
+
+(Any Arthur Dent quote)
+
+added:
+[T][ ] revise notes
+
+(Any Arthur Dent quote)
+
+removed:
+[T][ ] write report
+
+(Any Arthur Dent quote)
+
+1. [T][ ] revise notes
+
+So long, and thanks for all the fish.
+```
+
+## Test case 10: Remove without an index
+
+Aim: Verify that `remove` rejects a missing task index.
+
+Inputs:
+
+```text
+remove
+bye
+```
+
+Expected output pattern:
+
+```text
+Missing argument from remove: index
+(Any Arthur Dent quote)
+
+So long, and thanks for all the fish.
+```
+
+## Test case 11: Remove with invalid indices
+
+Aim: Verify that `remove` rejects non-numeric, zero, and out-of-range indices
+without changing the task list.
+
+Inputs:
+
+```text
+todo read book
+remove one
+remove 0
+remove 2
+list
+bye
+```
+
+Expected output pattern:
+
+```text
+(Any Arthur Dent quote)
+
+added:
+[T][ ] read book
+
+An invalid argument was passed to the command: one
+(Any Arthur Dent quote)
+
+An invalid argument was passed to the command: 0
+(Any Arthur Dent quote)
+
+An invalid argument was passed to the command: 2
+(Any Arthur Dent quote)
+
+(Any Arthur Dent quote)
+
+1. [T][ ] read book
+
+So long, and thanks for all the fish.
+```

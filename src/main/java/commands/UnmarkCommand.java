@@ -1,31 +1,30 @@
 package commands;
 
-import exceptions.InvalidArgumentException;
-import exceptions.MissingArgumentException;
-import messages.Message;
 import messages.UnmarkMessage;
+import messages.Message;
 import state.CommandContext;
 import tasks.Task;
 
 /**
  * Marks a numbered task as not completed.
  */
-public class UnmarkCommand extends Command {
+public class UnmarkCommand extends TaskCommand {
     private static final String COMMAND_NAME = "unmark";
     private static final String ARGUMENT_NAME = "index";
 
     @Override
-    // AI-assisted: Added handling that marks a one-based task number as not completed.
-    public Message handle(CommandContext context, String arg) {
-        Task task;
-        if (arg.isEmpty()) {
-            throw new MissingArgumentException(COMMAND_NAME, ARGUMENT_NAME);
-        }
-        try {
-            task = context.tasks().get(Integer.parseInt(arg) - 1);
-        } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            throw new InvalidArgumentException(arg);
-        }
+    protected String getArgumentName() {
+        return ARGUMENT_NAME;
+    }
+
+    @Override
+    protected String getCommandName() {
+        return COMMAND_NAME;
+    }
+
+    @Override
+    protected Message handle(CommandContext context, int index) {
+        Task task = context.tasks().get(index);
         task.unmark();
         return new UnmarkMessage(task);
     }
