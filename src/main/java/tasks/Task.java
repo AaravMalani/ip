@@ -4,8 +4,13 @@ package tasks;
  * Represents a task entered by the user.
  */
 public class Task {
-    // AI-assisted: Added a task model that stores the task description.
+    /*
+        AI-assisted:
+        * Added a task model that stores the task description.
+        * Added marked state and display formatting for tasks.
+     */
     private final String description;
+    private boolean isMarked;
 
     /**
      * Creates a task with the supplied description.
@@ -17,11 +22,26 @@ public class Task {
     }
 
     /**
-     * Returns the task description.
+     * Returns this task in the format expected by the list command.
      *
-     * @return the description entered by the user
+     * @return the task status followed by its description
      */
-    public String getDescription() {
-        return description;
+    @Override
+    public String toString() {
+        return (isMarked ? "[X] " : "[ ] ") + description;
+    }
+
+    /**
+     * Mark the task as done
+     */
+    public void mark() {
+        this.isMarked = true;
+    }
+
+    /**
+     * Unmark the task
+     */
+    public void unmark() {
+        this.isMarked  = false;
     }
 }

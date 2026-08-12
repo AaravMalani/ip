@@ -24,7 +24,7 @@ public class ListMessage extends Message {
     @Override
     public String toString() {
         return IntStream.range(0, tasks.size())
-                .mapToObj(index -> (index + 1) + ". " + tasks.get(index).getDescription())
+                .mapToObj(index -> (index + 1) + ". " + tasks.get(index))
                 .reduce("", (list, task) -> list.isEmpty() ? task : list + System.lineSeparator() + task);
     }
 
