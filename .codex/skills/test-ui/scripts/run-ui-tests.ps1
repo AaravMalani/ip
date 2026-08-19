@@ -28,7 +28,7 @@ try {
     }
     $processInfo = [System.Diagnostics.ProcessStartInfo]::new()
     $processInfo.FileName = $java
-    $processInfo.Arguments = "-cp `"$outputDirectory`" ArthurDent"
+    $processInfo.Arguments = "-cp `"$outputDirectory`" arthur.ArthurDent"
     $processInfo.UseShellExecute = $false
     $processInfo.RedirectStandardInput = $true
     $processInfo.RedirectStandardOutput = $true
