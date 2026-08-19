@@ -72,15 +72,15 @@ try {
         '^So long, and thanks for all the fish\.$'
     )
 
-    Invoke-IsolatedUiTest -Commands @('deadline submit report /by Friday', 'list', 'bye') -ExpectedOutputs @(
-        ($quoteOutput + 'added:\r?\n\[D\]\[ \] submit report \(by Friday\)$'),
-        ($quoteOutput + '1\. \[D\]\[ \] submit report \(by Friday\)$'),
+    Invoke-IsolatedUiTest -Commands @('deadline submit report /by 2026-08-20 1200', 'list', 'bye') -ExpectedOutputs @(
+        ($quoteOutput + 'added:\r?\n\[D\]\[ \] submit report \(by Aug 20 2026 @ 12:00\)$'),
+        ($quoteOutput + '1\. \[D\]\[ \] submit report \(by Aug 20 2026 @ 12:00\)$'),
         '^So long, and thanks for all the fish\.$'
     )
 
-    Invoke-IsolatedUiTest -Commands @('event team meeting /from Monday /to Tuesday', 'list', 'bye') -ExpectedOutputs @(
-        ($quoteOutput + 'added:\r?\n\[E\]\[ \] team meeting \(from Monday, to Tuesday\)$'),
-        ($quoteOutput + '1\. \[E\]\[ \] team meeting \(from Monday, to Tuesday\)$'),
+    Invoke-IsolatedUiTest -Commands @('event team meeting /from 2026-08-19 0900 /to 2026-08-21 1700', 'list', 'bye') -ExpectedOutputs @(
+        ($quoteOutput + 'added:\r?\n\[E\]\[ \] team meeting \(from Aug 19 2026 @ 09:00, to Aug 21 2026 @ 17:00\)$'),
+        ($quoteOutput + '1\. \[E\]\[ \] team meeting \(from Aug 19 2026 @ 09:00, to Aug 21 2026 @ 17:00\)$'),
         '^So long, and thanks for all the fish\.$'
     )
 
@@ -111,6 +111,14 @@ try {
         ($errorOutput + 'An invalid argument was passed to the command: 0\r?\n.*$'),
         ($errorOutput + 'An invalid argument was passed to the command: 2\r?\n.*$'),
         ($quoteOutput + '1\. \[T\]\[ \] read book$'),
+        '^So long, and thanks for all the fish\.$'
+    )
+
+    Invoke-IsolatedUiTest -Commands @('todo read book', 'deadline submit report /by 2026-08-20 1200', 'event conference /from 2026-08-19 0900 /to 2026-08-21 1700', 'filter /on 2026-08-20', 'bye') -ExpectedOutputs @(
+        ($quoteOutput + 'added:\r?\n\[T\]\[ \] read book$'),
+        ($quoteOutput + 'added:\r?\n\[D\]\[ \] submit report \(by Aug 20 2026 @ 12:00\)$'),
+        ($quoteOutput + 'added:\r?\n\[E\]\[ \] conference \(from Aug 19 2026 @ 09:00, to Aug 21 2026 @ 17:00\)$'),
+        ($quoteOutput + '1\. \[D\]\[ \] submit report \(by Aug 20 2026 @ 12:00\)\r?\n2\. \[E\]\[ \] conference \(from Aug 19 2026 @ 09:00, to Aug 21 2026 @ 17:00\)$'),
         '^So long, and thanks for all the fish\.$'
     )
 

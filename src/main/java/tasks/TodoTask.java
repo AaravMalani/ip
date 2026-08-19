@@ -1,5 +1,7 @@
 package tasks;
 
+import java.time.LocalDate;
+
 /**
  * Represents a task without a date or time requirement.
  */
@@ -9,6 +11,12 @@ public class TodoTask extends Task {
     // AI-assisted: Added the todo task type and its display format.
     public TodoTask(String description) {
         super(description);
+    }
+
+    @Override
+    // AI-assisted: Excluded todos from date-based filtering.
+    public boolean isOn(LocalDate date) {
+        return false;
     }
 
     @Override

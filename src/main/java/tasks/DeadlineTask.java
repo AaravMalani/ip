@@ -1,5 +1,6 @@
 package tasks;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import utils.Utils;
@@ -15,6 +16,12 @@ public class DeadlineTask extends Task {
     public DeadlineTask(String description, LocalDateTime by) {
         super(description);
         this.by = by;
+    }
+
+    @Override
+    // AI-assisted: Matched deadline tasks by their deadline date.
+    public boolean isOn(LocalDate date) {
+        return by.toLocalDate().equals(date);
     }
 
     @Override

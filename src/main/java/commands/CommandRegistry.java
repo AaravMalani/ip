@@ -16,6 +16,7 @@ public class CommandRegistry {
         registry.put("todo", TodoCommand.class);
         registry.put("bye", ByeCommand.class);
         registry.put("list", ListCommand.class);
+        registry.put("filter", FilterCommand.class);
         registry.put("mark", MarkCommand.class);
         registry.put("unmark", UnmarkCommand.class);
         registry.put("remove", RemoveCommand.class);

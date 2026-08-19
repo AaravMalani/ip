@@ -27,3 +27,4 @@ Prerequisites: JDK 25, update Intellij to the most recent version.
 ## AI Acknowledgements
 - Localised changes are attributed in the class code itself with the `// AI-assisted` prefix.
 - Inline code completion was also used to assist with development.
+- Test cases were generated as per the `test-ui` skill.

@@ -1,5 +1,6 @@
 package tasks;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import utils.Utils;
@@ -17,6 +18,14 @@ public class EventTask extends Task {
         super(description);
         this.from = from;
         this.to = to;
+    }
+
+    @Override
+    // AI-assisted: Matched event tasks across their inclusive date range.
+    public boolean isOn(LocalDate date) {
+        LocalDate startDate = from.toLocalDate();
+        LocalDate endDate = to.toLocalDate();
+        return !date.isBefore(startDate) && !date.isAfter(endDate);
     }
 
     @Override

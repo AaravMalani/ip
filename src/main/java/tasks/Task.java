@@ -1,6 +1,7 @@
 package tasks;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Represents a task entered by the user.
@@ -55,6 +56,15 @@ public abstract class Task implements Serializable {
     public void unmark() {
         this.isMarked  = false;
     }
+
+    /**
+     * Returns whether this task occurs on the supplied date.
+     *
+     * @param date the date to check
+     * @return whether this task occurs on {@code date}
+     */
+    // AI-assisted: Added a date predicate for filtering dated tasks.
+    public abstract boolean isOn(LocalDate date);
 
     @Override
     public abstract String toString();
