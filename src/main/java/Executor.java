@@ -3,6 +3,8 @@ import exceptions.ArthurRuntimeException;
 import messages.ErrorMessage;
 import messages.Message;
 import messages.WelcomeMessage;
+import state.CommandContext;
+import state.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,16 +16,24 @@ public class Executor {
     /** A horizontal line to separate messages */
     private static final String HORIZONTAL_LINE = "_".repeat(60);
 
+    /** The global state */
+    private final CommandContext context;
+
     /** The command handler which converts user input into messages */
-    private final CommandHandler commandHandler = new CommandHandler();
+    private final CommandHandler commandHandler;
 
     /** The scanner which reads user input */
     private final Scanner scanner = new Scanner(System.in);
 
     private static final String PROMPT = "\t> ";
 
+    /** The storage engine */
+    private final Storage storage = new Storage();
+
     Executor() {
         messages.add(new WelcomeMessage());
+        context = storage.load();
+        commandHandler = new CommandHandler(context);
     }
 
     /**
@@ -57,6 +67,7 @@ public class Executor {
             String input = acceptInput();
             try {
                 messages.add(commandHandler.handle(input));
+                storage.save(context);
             } catch (ArthurRuntimeException e) {
                 messages.add(new ErrorMessage(e));
             }

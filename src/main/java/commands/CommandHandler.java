@@ -3,18 +3,16 @@ package commands;
 import exceptions.UnknownCommandException;
 import messages.Message;
 import state.CommandContext;
-import tasks.Task;
-
-import java.util.ArrayList;
 
 /**
  * Handles commands sent by the user
  */
 public class CommandHandler {
-    /** The list of tasks stored during the current program session */
-    private final ArrayList<Task> tasks = new ArrayList<>();
-    /** The global state passed to all commands */
-    private final CommandContext context = new CommandContext(tasks);
+    private final CommandContext context;
+
+    public CommandHandler(CommandContext context) {
+        this.context = context;
+    }
 
     /**
      * Handles a command
