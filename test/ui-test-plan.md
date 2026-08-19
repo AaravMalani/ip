@@ -312,7 +312,33 @@ An invalid argument was passed to the command: 2
 So long, and thanks for all the fish.
 ```
 
-## Test case 12: Persist tasks between sessions
+## Test case 12: Filter dated tasks by date
+
+Aim: Verify that `filter /on` lists only deadline tasks due on, and event tasks
+spanning, the requested ISO date; todo tasks are excluded.
+
+Inputs:
+
+```text
+todo read book
+deadline submit report /by 2026-08-20 1200
+event conference /from 2026-08-19 0900 /to 2026-08-21 1700
+filter /on 2026-08-20
+bye
+```
+
+Expected output pattern:
+
+```text
+(Any Arthur Dent quote)
+
+1. [D][ ] submit report (by Aug 20 2026 @ 12:00)
+2. [E][ ] conference (from Aug 19 2026 @ 09:00, to Aug 21 2026 @ 17:00)
+
+So long, and thanks for all the fish.
+```
+
+## Test case 13: Persist tasks between sessions
 
 Aim: Verify that a task saved in one application session is loaded in a later
 session.

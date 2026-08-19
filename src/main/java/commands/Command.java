@@ -1,13 +1,13 @@
 package commands;
 
-import exceptions.MissingArgumentException;
-import messages.Message;
-import state.CommandContext;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import exceptions.MissingArgumentException;
+import messages.Message;
+import state.CommandContext;
 
 /**
  * A command is a message sent by the user to the program
@@ -21,7 +21,7 @@ public abstract class Command {
      */
     public abstract Message handle(CommandContext context, String arg);
 
-    protected Map<String, String> parseArgs(String arg, String... argNames) {
+    public Map<String, String> parseArgs(String arg, String... argNames) {
         String[] splits = arg.split(" ");
         List<String> argNamesList = Arrays.asList(argNames);
 
