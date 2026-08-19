@@ -1,9 +1,11 @@
 package tasks;
 
+import java.io.Serializable;
+
 /**
  * Represents a task entered by the user.
  */
-public abstract class Task {
+public abstract class Task implements Serializable {
     /*
         AI-assisted:
         * Added a task model that stores the task description.

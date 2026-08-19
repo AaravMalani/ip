@@ -311,3 +311,32 @@ An invalid argument was passed to the command: 2
 
 So long, and thanks for all the fish.
 ```
+
+## Test case 12: Persist tasks between sessions
+
+Aim: Verify that a task saved in one application session is loaded in a later
+session.
+
+Inputs (first session):
+
+```text
+todo read book
+bye
+```
+
+Inputs (second session):
+
+```text
+list
+bye
+```
+
+Expected output pattern (second session):
+
+```text
+(Any Arthur Dent quote)
+
+1. [T][ ] read book
+
+So long, and thanks for all the fish.
+```
