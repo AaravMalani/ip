@@ -5,7 +5,9 @@ import messages.Message;
 import state.CommandContext;
 import tasks.DeadlineTask;
 import tasks.Task;
+import utils.Utils;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
@@ -17,7 +19,7 @@ public class DeadlineCommand extends Command {
     public Message handle(CommandContext context, String arg) {
         Map<String, String> args = parseArgs(arg, "/by");
         String description = args.get("").trim();
-        String by = args.get("/by").trim();
+        LocalDateTime by = Utils.parseDateTime(args.get("/by").trim());
         Task task = new DeadlineTask(description, by);
         context.tasks().add(task);
         return new AddMessage(task);

@@ -1,15 +1,19 @@
 package tasks;
 
+import java.time.LocalDateTime;
+
+import utils.Utils;
+
 /**
  * Represents a task occurring between two dates.
  */
 public class EventTask extends Task {
     // AI-assisted: Added the event task type with from and to dates.
-    private final String from;
-    private final String to;
+    private final LocalDateTime from;
+    private final LocalDateTime to;
     private static final TaskType TASK_TYPE = TaskType.EVENT;
 
-    public EventTask(String description, String from, String to) {
+    public EventTask(String description, LocalDateTime from, LocalDateTime to) {
         super(description);
         this.from = from;
         this.to = to;
@@ -18,6 +22,6 @@ public class EventTask extends Task {
     @Override
     public String toString() {
         return TASK_TYPE + getMarkedIcon() + " " + getDescription()
-                + " (from " + from + ", to " + to + ")";
+                + " (from " + Utils.formatDateTime(from) + ", to " + Utils.formatDateTime(to) + ")";
     }
 }
