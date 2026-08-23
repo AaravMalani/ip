@@ -21,6 +21,12 @@ public abstract class Command {
      */
     public abstract Message handle(CommandContext context, String arg);
 
+    /**
+     * Parses the arguments sent by the user into a map
+     * @param arg the extra arguments sent by the user. For example, if the user sends "hello world john", arg will be "world john"
+     * @param argNames the names of the arguments to parse (for example, "/world" and "/john")
+     * @return a map of the arguments
+     */
     public Map<String, String> parseArgs(String arg, String... argNames) {
         String[] splits = arg.split(" ");
         List<String> argNamesList = Arrays.asList(argNames);
