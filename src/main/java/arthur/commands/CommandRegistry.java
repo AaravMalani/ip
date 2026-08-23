@@ -27,6 +27,11 @@ public class CommandRegistry {
     }
 
 
+    /**
+     * Gets the command class from the registry by command name
+     * @param command the name of the command to get
+     * @return the command class
+     */
     public static Command getCommand(String command) {
         if (!registry.containsKey(command)) {
             return null;
@@ -38,6 +43,11 @@ public class CommandRegistry {
         }
     }
 
+    /**
+     * Gets the command name from the registry by command class
+     * @param c the command class to get
+     * @return the command name
+     */
     public static String getCommandName(Class<? extends Command> c) {
         if (!registryInv.containsKey(c)) {
             return null;
