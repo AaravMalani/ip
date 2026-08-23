@@ -1,11 +1,18 @@
 package arthur.state;
 
-import arthur.exceptions.StorageException;
-
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import arthur.exceptions.StorageException;
+
+/**
+ * Loads and saves the command context on disk.
+ */
 public class Storage {
     private static final Path FILE_PATH = Path.of("./data/arthur.bin");
     private static final Path DIRECTORY_PATH = Path.of("./data");

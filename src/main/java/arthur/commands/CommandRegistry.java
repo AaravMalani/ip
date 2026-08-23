@@ -1,10 +1,13 @@
 package arthur.commands;
 
-import arthur.exceptions.InvalidCommandException;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import arthur.exceptions.InvalidCommandException;
+
+/**
+ * Maps command names to their implementations.
+ */
 public class CommandRegistry {
     private static final Map<String, Class<? extends Command>> registry = new HashMap<>();
     private static final Map<Class<? extends Command>, String> registryInv = new HashMap<>();

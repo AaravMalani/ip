@@ -17,6 +17,10 @@ import arthur.messages.Message;
 import arthur.state.CommandContext;
 
 public class ByeCommandTest {
+    private static ByteArrayInputStream input(String commands) {
+        return new ByteArrayInputStream(commands.getBytes(StandardCharsets.UTF_8));
+    }
+
     // AI-assisted: Cover ByeCommand directly and through the full executor loop without text snapshots.
     @Test
     public void handle_noArguments_returnsFinalByeMessage() {
@@ -38,9 +42,5 @@ public class ByeCommandTest {
         Executor executor = new Executor(input("bye\n"), output, new InMemoryStorage());
         assertEquals(0, executor.run());
         assertEquals(1, output.getMessages().stream().filter(ByeMessage.class::isInstance).count());
-    }
-
-    private static ByteArrayInputStream input(String commands) {
-        return new ByteArrayInputStream(commands.getBytes(StandardCharsets.UTF_8));
     }
 }

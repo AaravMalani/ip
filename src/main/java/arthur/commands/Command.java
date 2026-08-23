@@ -10,14 +10,16 @@ import arthur.messages.Message;
 import arthur.state.CommandContext;
 
 /**
- * A command is a message sent by the user to the program
- *  It has one main function: the {@link Command#handle(CommandContext context, String arg)} method which
+ * Represents an operation requested by the user.
+ * It has one main function: the {@link Command#handle(CommandContext context, String arg)} method
  */
 public abstract class Command {
     /**
      * Handles a command
-     * @param arg the extra arguments sent by the user. For example, if the user sends "hello world john", arg will be "world john"
-     * @return the response to the command
+     *
+     * @param context the shared command state.
+     * @param arg the extra command arguments.
+     * @return the response to display.
      */
     public abstract Message handle(CommandContext context, String arg);
 
@@ -51,7 +53,7 @@ public abstract class Command {
             currentArg.deleteCharAt(currentArg.length() - 1);
         }
         map.put(currentArgName, currentArg.toString());
-        for (String argName: argNames) {
+        for (String argName : argNames) {
             if (!map.containsKey(argName)) {
                 throw new MissingArgumentException(CommandRegistry.getCommandName(this.getClass()), argName);
             }

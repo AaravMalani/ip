@@ -1,5 +1,8 @@
 package arthur.tasks;
 
+/**
+ * Identifies the supported task categories.
+ */
 public enum TaskType {
     EVENT("[E]"),
     TODO("[T]"),
@@ -7,6 +10,7 @@ public enum TaskType {
 
 
     private final String displayName;
+
     TaskType(String displayName) {
         this.displayName = displayName;
     }

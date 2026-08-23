@@ -7,7 +7,9 @@ import java.util.List;
 
 import arthur.messages.Message;
 
-/** Records application messages without asserting their rendered text. */
+/**
+ * Records application messages without asserting their rendered text.
+ */
 public class RecordingPrintStream extends PrintStream {
     private final List<Message> messages = new ArrayList<>();
 

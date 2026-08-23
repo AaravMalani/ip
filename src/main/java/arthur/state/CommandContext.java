@@ -1,9 +1,9 @@
 package arthur.state;
 
-import arthur.tasks.Task;
-
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import arthur.tasks.Task;
 
 /**
  * Stores the shared state that commands need during a program session.

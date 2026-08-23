@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import arthur.messages.UnmarkMessage;
 import arthur.exceptions.InvalidArgumentException;
 import arthur.exceptions.MissingArgumentException;
+import arthur.messages.UnmarkMessage;
 import arthur.state.CommandContext;
 import arthur.tasks.TodoTask;
 

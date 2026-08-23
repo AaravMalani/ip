@@ -1,5 +1,11 @@
 package arthur;
 
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import arthur.commands.CommandHandler;
 import arthur.exceptions.ArthurRuntimeException;
 import arthur.messages.ErrorMessage;
@@ -8,39 +14,31 @@ import arthur.messages.WelcomeMessage;
 import arthur.state.CommandContext;
 import arthur.state.Storage;
 
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
+/**
+ * Coordinates command execution, persistence, and console output.
+ */
 public class Executor {
+    /**
+     * A horizontal line to separate messages
+     */
+    private static final String HORIZONTAL_LINE = "_".repeat(60);
+    private static final String PROMPT = "\t> ";
     /**
      * The message queue
      */
     private final List<Message> messages = new ArrayList<>();
     /**
-     * A horizontal line to separate messages
-     */
-    private static final String HORIZONTAL_LINE = "_".repeat(60);
-
-    /**
      * The global state
      */
     private final CommandContext context;
-
     /**
      * The command handler which converts user input into messages
      */
     private final CommandHandler commandHandler;
-
     /**
      * The scanner which reads user input
      */
     private final Scanner scanner;
-
-    private static final String PROMPT = "\t> ";
-
     /**
      * The storage engine
      */
@@ -59,7 +57,6 @@ public class Executor {
         this(inputStream, outputStream, new Storage());
     }
 
-    // AI-assisted: Allow integration tests to provide non-persistent storage.
     public Executor(InputStream inputStream, PrintStream outputStream, Storage storage) {
         this.scanner = new Scanner(inputStream);
         this.outputStream = outputStream;

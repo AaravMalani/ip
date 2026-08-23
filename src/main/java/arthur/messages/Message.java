@@ -5,7 +5,8 @@ package arthur.messages;
  */
 public abstract class Message {
     private final static String[] QUOTES = {
-            "There's an infinite number of monkeys outside who want to talk to us about this script for Hamlet they've worked out.",
+            "There's an infinite number of monkeys outside who want to talk to us about this script for Hamlet "
+                    + "they've worked out.",
             "Is there any tea on this spaceship?",
             "This must be Thursday. I never could get the hang of Thursdays.",
             "I'd far rather be happy than right any day.",
@@ -21,6 +22,8 @@ public abstract class Message {
     @Override
     public abstract String toString();
 
-    /** Returns true if the program should return after this message  */
+    /**
+     * Returns true if the program should return after this message
+     */
     public abstract boolean isFinal();
 }

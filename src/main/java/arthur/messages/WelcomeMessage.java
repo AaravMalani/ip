@@ -1,5 +1,8 @@
 package arthur.messages;
 
+/**
+ * Represents the message displayed when the application starts.
+ */
 public class WelcomeMessage extends Message {
     // AI-assisted: Replaced the default Duke banner with ASCII art for "ARTHUR".
     private static final String MESSAGE = """

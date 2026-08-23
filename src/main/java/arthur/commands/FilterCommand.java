@@ -18,7 +18,7 @@ public class FilterCommand extends Command {
      * Filters stored deadline and event tasks by the date supplied with {@code /on}.
      *
      * @param context the shared command state
-     * @param arg command arguments containing {@code /on yyyy-MM-dd}
+     * @param arg     command arguments containing {@code /on yyyy-MM-dd}
      * @return a message containing matching tasks
      */
     @Override

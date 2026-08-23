@@ -1,7 +1,7 @@
 package arthur.utils;
 
-import java.time.LocalDateTime;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
@@ -9,17 +9,22 @@ import java.util.Locale;
 
 import arthur.exceptions.InvalidDateTimeException;
 
+/**
+ * Provides date and time parsing and formatting utilities.
+ */
 public class Utils {
-    private static final DateTimeFormatter DATETIME_INPUT_FORMAT = DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm", Locale.ENGLISH).withResolverStyle(ResolverStyle.STRICT);
+    private static final DateTimeFormatter DATETIME_INPUT_FORMAT =
+            DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm", Locale.ENGLISH)
+                    .withResolverStyle(ResolverStyle.STRICT);
     private static final DateTimeFormatter DATETIME_OUTPUT_FORMAT = DateTimeFormatter.ofPattern("MMM dd uuuu @ HH:mm");
     private static final DateTimeFormatter DATE_INPUT_FORMAT = DateTimeFormatter.ISO_LOCAL_DATE;
 
     /**
      * Parses a string into a datetime object.
      *
-     * @param dateTime The datetime string in {@code yyyy-MM-dd HHmm} format
-     * @return the parsed datetime object
-     * @throws InvalidDateTimeException if the input is not a valid datetime
+     * @param dateTime the datetime string in {@code yyyy-MM-dd HHmm} format.
+     * @return the parsed datetime object.
+     * @throws InvalidDateTimeException if the input is not a valid datetime.
      */
     public static LocalDateTime parseDateTime(String dateTime) {
         try {
@@ -32,8 +37,8 @@ public class Utils {
     /**
      * Formats a datetime object into a string.
      *
-     * @param dateTime the datetime object
-     * @return the formatted date
+     * @param dateTime the datetime object.
+     * @return the formatted date.
      */
     public static String formatDateTime(LocalDateTime dateTime) {
         return dateTime.format(DATETIME_OUTPUT_FORMAT);
@@ -42,9 +47,9 @@ public class Utils {
     /**
      * Parses an ISO-8601 calendar date.
      *
-     * @param date the date in {@code yyyy-MM-dd} format
-     * @return the parsed date
-     * @throws InvalidDateTimeException if the input is not a valid date
+     * @param date the date in {@code yyyy-MM-dd} format.
+     * @return the parsed date.
+     * @throws InvalidDateTimeException if the input is not a valid date.
      */
     // AI-assisted: Added ISO date parsing for the filter command.
     public static LocalDate parseDate(String date) {

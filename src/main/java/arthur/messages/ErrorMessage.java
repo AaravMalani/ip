@@ -2,8 +2,10 @@ package arthur.messages;
 
 import arthur.exceptions.ArthurRuntimeException;
 
-/** Displayed when a command throws an error */
-public class ErrorMessage extends Message{
+/**
+ * Displayed when a command throws an error
+ */
+public class ErrorMessage extends Message {
     private final ArthurRuntimeException exception;
 
     public ErrorMessage(ArthurRuntimeException exception) {

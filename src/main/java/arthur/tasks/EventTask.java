@@ -9,10 +9,10 @@ import arthur.utils.Utils;
  * Represents a task occurring between two dates.
  */
 public class EventTask extends Task {
+    private static final TaskType TASK_TYPE = TaskType.EVENT;
     // AI-assisted: Added the event task type with from and to dates.
     private final LocalDateTime from;
     private final LocalDateTime to;
-    private static final TaskType TASK_TYPE = TaskType.EVENT;
 
     public EventTask(String description, LocalDateTime from, LocalDateTime to) {
         super(description);

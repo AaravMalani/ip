@@ -1,14 +1,14 @@
 package arthur.commands;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import arthur.messages.RemoveMessage;
 import arthur.exceptions.InvalidArgumentException;
 import arthur.exceptions.MissingArgumentException;
+import arthur.messages.RemoveMessage;
 import arthur.state.CommandContext;
 import arthur.tasks.TodoTask;
 
