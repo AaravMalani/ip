@@ -10,13 +10,14 @@ import arthur.state.CommandContext;
  */
 public abstract class TaskCommand extends Command {
     protected abstract String getArgumentName();
+
     protected abstract String getCommandName();
 
     /**
      * Handles a task command
      *
      * @param context The command context
-     * @param index The 0-based index of the task to handle
+     * @param index   The 0-based index of the task to handle
      * @return The message to display to the user
      */
     protected abstract Message handle(CommandContext context, int index);
@@ -30,7 +31,7 @@ public abstract class TaskCommand extends Command {
         int index;
         try {
             index = Integer.parseInt(arg) - 1;
-        } catch (NumberFormatException  e) {
+        } catch (NumberFormatException e) {
             throw new InvalidArgumentException(arg);
         }
         if (index < 0 || index >= context.tasks().size()) {

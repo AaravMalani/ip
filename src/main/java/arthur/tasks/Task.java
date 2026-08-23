@@ -54,7 +54,7 @@ public abstract class Task implements Serializable {
      * Unmark the task
      */
     public void unmark() {
-        this.isMarked  = false;
+        this.isMarked = false;
     }
 
     /**

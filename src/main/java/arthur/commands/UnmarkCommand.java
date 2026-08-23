@@ -1,7 +1,7 @@
 package arthur.commands;
 
-import arthur.messages.UnmarkMessage;
 import arthur.messages.Message;
+import arthur.messages.UnmarkMessage;
 import arthur.state.CommandContext;
 import arthur.tasks.Task;
 

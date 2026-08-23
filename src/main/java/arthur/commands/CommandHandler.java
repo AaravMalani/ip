@@ -16,6 +16,7 @@ public class CommandHandler {
 
     /**
      * Handles a command
+     *
      * @param command the command to handle
      * @return the response to the command
      */

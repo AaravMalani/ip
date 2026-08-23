@@ -1,5 +1,8 @@
 package arthur.commands;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+
 import arthur.messages.AddMessage;
 import arthur.messages.Message;
 import arthur.state.CommandContext;
@@ -7,11 +10,8 @@ import arthur.tasks.EventTask;
 import arthur.tasks.Task;
 import arthur.utils.Utils;
 
-import java.time.LocalDateTime;
-import java.util.Map;
-
 /**
- * Adds a deadline task to the shared task list.
+ * Adds an event task to the shared task list.
  */
 public class EventCommand extends Command {
     @Override

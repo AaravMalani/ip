@@ -1,18 +1,17 @@
 package arthur.messages;
 
-import arthur.tasks.Task;
-
 import java.util.List;
 import java.util.stream.IntStream;
+
+import arthur.tasks.Task;
 
 /**
  * Displays the tasks currently stored in the command context.
  */
 public class ListMessage extends Message {
+    private static final String NO_TASKS = "No tasks to display.";
     // AI-assisted: Added a message that formats stored tasks as numbered entries.
     private final List<Task> tasks;
-
-    private static final String NO_TASKS = "No tasks to display.";
 
     /**
      * Creates a message that displays the supplied tasks.

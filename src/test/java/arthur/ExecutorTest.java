@@ -9,6 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class ExecutorTest {
+    private static ByteArrayInputStream input(String commands) {
+        return new ByteArrayInputStream(commands.getBytes(StandardCharsets.UTF_8));
+    }
+
     // AI-assisted: Exercise a multi-command session through the executor without text snapshots.
     @Test
     public void run_taskLifecycleCommands_returnsSuccessAndPrintsExpectedMessageTypes() {
@@ -26,9 +30,5 @@ public class ExecutorTest {
         assertEquals(List.of("WelcomeMessage", "AddMessage", "MarkMessage", "UnmarkMessage",
                         "RemoveMessage", "ListMessage", "ByeMessage"),
                 output.getMessages().stream().map(message -> message.getClass().getSimpleName()).toList());
-    }
-
-    private static ByteArrayInputStream input(String commands) {
-        return new ByteArrayInputStream(commands.getBytes(StandardCharsets.UTF_8));
     }
 }
