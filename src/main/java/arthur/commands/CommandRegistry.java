@@ -20,7 +20,7 @@ public class CommandRegistry {
         registry.put("mark", MarkCommand.class);
         registry.put("unmark", UnmarkCommand.class);
         registry.put("remove", RemoveCommand.class);
-
+        registry.put("find", FindCommand.class);
         for (Map.Entry<String, Class<? extends Command>> entry : registry.entrySet()) {
             registryInv.put(entry.getValue(), entry.getKey());
         }

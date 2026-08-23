@@ -66,6 +66,16 @@ public abstract class Task implements Serializable {
     // AI-assisted: Added a date predicate for filtering dated tasks.
     public abstract boolean isOn(LocalDate date);
 
+    /**
+     * Returns whether the description of this task contains the supplied keyword.
+     *
+     * @param keyword the keyword to check
+     * @return whether the description contains {@code keyword}
+     */
+    public boolean contains(String keyword) {
+        return description.contains(keyword);
+    }
+
     @Override
     public abstract String toString();
 }
