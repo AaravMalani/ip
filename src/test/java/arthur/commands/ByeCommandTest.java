@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.Test;
 
-import arthur.Executor;
 import arthur.InMemoryStorage;
 import arthur.RecordingPrintStream;
 import arthur.messages.ByeMessage;
