@@ -23,13 +23,13 @@ public class DeadlineCommandTest {
 
     @Test
     public void handle_missingByArgument_throwsMissingArgumentException() {
-        assertThrows(MissingArgumentException.class,
-                () -> new DeadlineCommand().handle(new CommandContext(), "submit report"));
+        assertThrows(MissingArgumentException.class, () ->
+                new DeadlineCommand().handle(new CommandContext(), "submit report"));
     }
 
     @Test
     public void handle_invalidByDate_throwsInvalidDateTimeException() {
-        assertThrows(InvalidDateTimeException.class,
-                () -> new DeadlineCommand().handle(new CommandContext(), "submit report /by tomorrow"));
+        assertThrows(InvalidDateTimeException.class, () ->
+                new DeadlineCommand().handle(new CommandContext(), "submit report /by tomorrow"));
     }
 }

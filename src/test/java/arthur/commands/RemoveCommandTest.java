@@ -24,8 +24,8 @@ public class RemoveCommandTest {
 
     @Test
     public void handle_missingIndex_throwsMissingArgumentException() {
-        assertThrows(MissingArgumentException.class,
-                () -> new RemoveCommand().handle(new CommandContext(), ""));
+        assertThrows(MissingArgumentException.class, () ->
+                new RemoveCommand().handle(new CommandContext(), ""));
     }
 
     @Test

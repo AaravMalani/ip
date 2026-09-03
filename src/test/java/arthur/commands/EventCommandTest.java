@@ -23,8 +23,8 @@ public class EventCommandTest {
 
     @Test
     public void handle_missingToArgument_throwsMissingArgumentException() {
-        assertThrows(MissingArgumentException.class,
-                () -> new EventCommand().handle(new CommandContext(), "meeting /from 2026-09-15 0900"));
+        assertThrows(MissingArgumentException.class, () ->
+                new EventCommand().handle(new CommandContext(), "meeting /from 2026-09-15 0900"));
     }
 
     @Test

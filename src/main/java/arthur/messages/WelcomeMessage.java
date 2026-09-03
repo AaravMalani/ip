@@ -11,7 +11,7 @@ public class WelcomeMessage extends Message {
               / _ \\ | |_) || | | |_| | | | | |_) |
              / ___ \\|  _ < | | |  _  | |_| |  _ <
             /_/   \\_\\_| \\_\\|_| |_| |_|\\___/|_| \\_\\
-            
+
             I'm Dent, Arthur Dent. Would it save you a lot of time
             if I just gave up and went mad now?
             """;

@@ -20,13 +20,13 @@ public class FilterCommandTest {
 
     @Test
     public void handle_invalidDate_throwsInvalidDateTimeException() {
-        assertThrows(InvalidDateTimeException.class,
-                () -> new FilterCommand().handle(new CommandContext(), "/on 2026-02-29"));
+        assertThrows(InvalidDateTimeException.class, () ->
+                new FilterCommand().handle(new CommandContext(), "/on 2026-02-29"));
     }
 
     @Test
     public void handle_missingOnArgument_throwsMissingArgumentException() {
-        assertThrows(MissingArgumentException.class,
-                () -> new FilterCommand().handle(new CommandContext(), ""));
+        assertThrows(MissingArgumentException.class, () ->
+                new FilterCommand().handle(new CommandContext(), ""));
     }
 }
