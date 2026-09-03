@@ -26,8 +26,8 @@ public class UnmarkCommandTest {
 
     @Test
     public void handle_missingIndex_throwsMissingArgumentException() {
-        assertThrows(MissingArgumentException.class,
-                () -> new UnmarkCommand().handle(new CommandContext(), ""));
+        assertThrows(MissingArgumentException.class, () ->
+                new UnmarkCommand().handle(new CommandContext(), ""));
     }
 
     @Test

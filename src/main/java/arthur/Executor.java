@@ -57,6 +57,12 @@ public class Executor {
         this(inputStream, outputStream, new Storage());
     }
 
+    /**
+     * Creates a new executor
+     * @param inputStream The input stream (e.g. System.in)
+     * @param outputStream The output stream (e.g. System.out)
+     * @param storage The storage engine (e.g. a Storage object)
+     */
     public Executor(InputStream inputStream, PrintStream outputStream, Storage storage) {
         this.scanner = new Scanner(inputStream);
         this.outputStream = outputStream;

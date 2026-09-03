@@ -24,14 +24,14 @@ public class MarkCommandTest {
 
     @Test
     public void handle_missingIndex_throwsMissingArgumentException() {
-        assertThrows(MissingArgumentException.class,
-                () -> new MarkCommand().handle(new CommandContext(), ""));
+        assertThrows(MissingArgumentException.class, () ->
+                new MarkCommand().handle(new CommandContext(), ""));
     }
 
     @Test
     public void handle_nonNumericIndex_throwsInvalidArgumentException() {
-        assertThrows(InvalidArgumentException.class,
-                () -> new MarkCommand().handle(new CommandContext(), "first"));
+        assertThrows(InvalidArgumentException.class, () ->
+                new MarkCommand().handle(new CommandContext(), "first"));
     }
 
     @Test
