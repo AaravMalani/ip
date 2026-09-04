@@ -21,4 +21,9 @@ public class ErrorMessage extends Message {
     public boolean isFinal() {
         return false;
     }
+
+    @Override
+    public String getClassName() {
+        return "error-message";
+    }
 }
