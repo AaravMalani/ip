@@ -9,7 +9,9 @@ import arthur.utils.Utils;
  * Represents a task occurring between two dates.
  */
 public class EventTask extends Task {
+    // AI-assisted: Named the event display format.
     private static final TaskType TASK_TYPE = TaskType.EVENT;
+    private static final String TASK_DISPLAY_FORMAT = "%s%s %s (from %s, to %s)";
     // AI-assisted: Added the event task type with from and to dates.
     private final LocalDateTime from;
     private final LocalDateTime to;
@@ -36,7 +38,7 @@ public class EventTask extends Task {
 
     @Override
     public String toString() {
-        return TASK_TYPE + getMarkedIcon() + " " + getDescription()
-                + " (from " + Utils.formatDateTime(from) + ", to " + Utils.formatDateTime(to) + ")";
+        return String.format(TASK_DISPLAY_FORMAT, TASK_TYPE, getMarkedIcon(), getDescription(),
+                Utils.formatDateTime(from), Utils.formatDateTime(to));
     }
 }

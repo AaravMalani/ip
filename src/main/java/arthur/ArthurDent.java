@@ -16,6 +16,10 @@ import javafx.stage.Stage;
  * Starts the Arthur application.
  */
 public class ArthurDent extends Application {
+    // AI-assisted: Named the minimum window dimensions and main layout resource.
+    private static final String MAIN_WINDOW_FXML = "/view/MainWindow.fxml";
+    private static final double MINIMUM_WINDOW_HEIGHT = 220;
+    private static final double MINIMUM_WINDOW_WIDTH = 417;
 
     @Override
     public void start(Stage stage) {
@@ -23,12 +27,12 @@ public class ArthurDent extends Application {
             Storage storage = new Storage();
             CommandContext context = storage.load();
             CommandHandler handler = new CommandHandler(context, storage);
-            FXMLLoader fxmlLoader = new FXMLLoader(ArthurDent.class.getResource("/view/MainWindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(ArthurDent.class.getResource(MAIN_WINDOW_FXML));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            stage.setMinHeight(220);
-            stage.setMinWidth(417);
+            stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+            stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             fxmlLoader.<MainWindow>getController().setHandler(handler); // inject the command handler
             stage.show();
         } catch (IOException e) {
