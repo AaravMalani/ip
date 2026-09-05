@@ -29,7 +29,7 @@ public class Storage {
         }
         try (FileInputStream fileIn = new FileInputStream(FILE_PATH.toFile());
              ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
-            return (CommandContext) objectIn.readObject();
+            return ((CommandContext) objectIn.readObject()).fixed();
         } catch (IOException | ClassNotFoundException e) {
             return new CommandContext();
         }
