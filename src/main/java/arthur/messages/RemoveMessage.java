@@ -12,6 +12,11 @@ public class RemoveMessage extends Message {
     // AI-assisted: Added the confirmation message for marking a task.
     private final Task task;
 
+    /**
+     * Confirmation message for removing a task.
+     *
+     * @param task The task that was removed.
+     */
     public RemoveMessage(Task task) {
         this.task = task;
         assert task != null : "Task should not be null";

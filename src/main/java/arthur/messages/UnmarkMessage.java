@@ -12,6 +12,11 @@ public class UnmarkMessage extends Message {
     // AI-assisted: Added the confirmation message for unmarking a task.
     private final Task task;
 
+    /**
+     * Confirmation message for unmarking a task.
+     *
+     * @param task The task that was unmarked.
+     */
     public UnmarkMessage(Task task) {
         this.task = task;
         assert task != null : "Task should not be null";
