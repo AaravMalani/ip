@@ -74,12 +74,23 @@ public class MainWindow extends AnchorPane {
             return;
         }
         Message response = handler.handle(input);
+        displayConversation(input, response);
+        userInput.clear();
+    }
+
+    /**
+     * Adds the user's input and Arthur's response to the conversation display.
+     *
+     * @param input    the user's submitted text
+     * @param response Arthur's response to the input
+     */
+    // AI-assisted: Extracted conversation display updates from the input event handler.
+    private void displayConversation(String input, Message response) {
         dialogContainer.getChildren().addAll(
             DialogBox.getUserDialog(input, USER_IMAGE),
             DialogBox.getArthurDialog(response.toString(),
                     ARTHUR_IMAGES[arthurImageIndex++ % ARTHUR_IMAGES.length],
                     response.getClassName())
         );
-        userInput.clear();
     }
 }

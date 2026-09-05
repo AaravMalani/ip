@@ -38,36 +38,58 @@ public class CommandHandler {
      * @return the response to the command
      */
     public Message handle(String command) {
-        // AI-assisted: Replaced echo handling with registered add and list command handling.
+        /*
+            AI-assisted:
+            * Replaced echo handling with registered add and list command handling.
+            * Extracted command execution and final-message exit scheduling.
+         */
+        Message message = executeCommand(command);
+        storage.save(context);
+        exitAfterDelayIfFinal(message);
+        return message;
+    }
+
+    /**
+     * Executes a command and converts command failures into displayable error messages.
+     *
+     * @param command the user-entered command
+     * @return the command response or an error response
+     */
+    // AI-assisted: Extracted command lookup, argument parsing, and exception handling from handle.
+    private Message executeCommand(String command) {
         String commandName = command.split(COMMAND_SEPARATOR)[COMMAND_NAME_INDEX];
         Command commandInstance = CommandRegistry.getCommand(commandName);
-        // In case of no arguments, substring throws an exception
-        Message message;
         try {
             if (commandInstance == null) {
                 throw new UnknownCommandException(command);
             }
             if (command.length() == commandName.length()) {
-                message = commandInstance.handle(context, Command.UNNAMED_ARGUMENT);
-            } else {
-                String otherArg = command.substring(commandName.length() + COMMAND_SEPARATOR.length());
-                message = commandInstance.handle(context, otherArg);
+                return commandInstance.handle(context, Command.UNNAMED_ARGUMENT);
             }
+            String otherArg = command.substring(commandName.length() + COMMAND_SEPARATOR.length());
+            return commandInstance.handle(context, otherArg);
         } catch (ArthurRuntimeException e) {
-            message = new ErrorMessage(e);
+            return new ErrorMessage(e);
         }
-        storage.save(context);
+    }
 
-        if (message.isFinal()) {
-            new Thread(() -> {
-                try {
-                    Thread.sleep(EXIT_DELAY_MILLIS);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                System.exit(0);
-            });
+    /**
+     * Starts a delayed application exit after a final message has been displayed.
+     *
+     * @param message the response returned by the command
+     */
+    // AI-assisted: Extracted delayed exit handling and started its background thread.
+    private void exitAfterDelayIfFinal(Message message) {
+        if (!message.isFinal()) {
+            return;
         }
-        return message;
+        new Thread(() -> {
+            try {
+                Thread.sleep(EXIT_DELAY_MILLIS);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.exit(0);
+        }).start();
     }
 }
