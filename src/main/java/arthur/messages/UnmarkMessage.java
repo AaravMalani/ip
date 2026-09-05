@@ -11,6 +11,7 @@ public class UnmarkMessage extends Message {
 
     public UnmarkMessage(Task task) {
         this.task = task;
+        assert task != null : "Task should not be null";
     }
 
     @Override

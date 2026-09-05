@@ -15,6 +15,7 @@ public class MarkMessage extends Message {
 
     @Override
     public String toString() {
+        assert task != null : "Task should not be null";
         return String.format("%s\n\nmarked:\n%s", getRandomQuote(), task);
     }
 

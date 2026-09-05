@@ -16,6 +16,7 @@ public class AddMessage extends Message {
      */
     public AddMessage(Task task) {
         this.task = task;
+        assert task != null : "Task should not be null";
     }
 
     @Override
