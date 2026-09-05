@@ -14,6 +14,7 @@ public class RemoveMessage extends Message {
 
     public RemoveMessage(Task task) {
         this.task = task;
+        assert task != null : "Task should not be null";
     }
 
     @Override

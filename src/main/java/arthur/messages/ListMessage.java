@@ -25,6 +25,7 @@ public class ListMessage extends Message {
      */
     public ListMessage(List<Task> tasks) {
         this.tasks = tasks;
+        assert tasks != null : "Tasks should not be null";
     }
 
     @Override
