@@ -7,3 +7,13 @@ Aim: Verify that the application displays the farewell message and exits after t
 Inputs: `bye`
 
 Expected output pattern: `^So long, and thanks for all the fish\.$`
+
+## Add and remove a command alias
+
+Aim: Verify that alias commands store and remove an alias mapping.
+
+Inputs: `alias add /from abc /to todo`, `alias list`, `alias remove /name abc`, `bye`
+
+Expected output patterns: `(?s)^.*\r?\n\r?\nalias added:\r?\nabc -> todo$`,
+`(?s)^.*\r?\n\r?\naliases:\r?\nabc -> todo$`,
+`(?s)^.*\r?\n\r?\nalias removed:\r?\nabc$`, `^So long, and thanks for all the fish\.$`

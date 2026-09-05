@@ -58,7 +58,7 @@ public class CommandHandler {
     // AI-assisted: Extracted command lookup, argument parsing, and exception handling from handle.
     private Message executeCommand(String command) {
         String commandName = command.split(COMMAND_SEPARATOR)[COMMAND_NAME_INDEX];
-        Command commandInstance = CommandRegistry.getCommand(commandName);
+        Command commandInstance = CommandRegistry.getCommand(context, commandName);
         try {
             if (commandInstance == null) {
                 throw new UnknownCommandException(command);
