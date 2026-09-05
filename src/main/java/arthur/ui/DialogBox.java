@@ -19,6 +19,10 @@ import javafx.scene.layout.HBox;
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
+    // AI-assisted: Named the dialog layout resource and reply CSS class.
+    private static final String DIALOG_BOX_FXML = "/view/DialogBox.fxml";
+    private static final String REPLY_LABEL_CSS_CLASS = "reply-label";
+
     @FXML
     private Label dialog;
     @FXML
@@ -26,7 +30,7 @@ public class DialogBox extends HBox {
 
     private DialogBox(String text, Image img, String className) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource(DIALOG_BOX_FXML));
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
@@ -46,7 +50,7 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
-        dialog.getStyleClass().add("reply-label");
+        dialog.getStyleClass().add(REPLY_LABEL_CSS_CLASS);
     }
 
     public static DialogBox getUserDialog(String text, Image img) {

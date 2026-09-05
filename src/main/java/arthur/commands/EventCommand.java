@@ -18,7 +18,7 @@ public class EventCommand extends Command {
     // AI-assisted: Added handling that creates and stores a task in the shared command context.
     public Message handle(CommandContext context, String arg) {
         Map<String, String> args = parseArgs(arg, "/from", "/to");
-        String description = args.get("").trim();
+        String description = args.get(UNNAMED_ARGUMENT).trim();
         LocalDateTime from = Utils.parseDateTime(args.get("/from").trim());
         LocalDateTime to = Utils.parseDateTime(args.get("/to").trim());
         Task task = new EventTask(description, from, to);

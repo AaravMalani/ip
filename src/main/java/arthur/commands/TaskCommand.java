@@ -9,6 +9,8 @@ import arthur.state.CommandContext;
  * A command that handles a task by its index.
  */
 public abstract class TaskCommand extends Command {
+    // AI-assisted: Named the conversion from the user's one-based task number to a list index.
+    private static final int USER_INDEX_OFFSET = 1;
     protected abstract String getArgumentName();
 
     protected abstract String getCommandName();
@@ -30,7 +32,7 @@ public abstract class TaskCommand extends Command {
         }
         int index;
         try {
-            index = Integer.parseInt(arg) - 1;
+            index = Integer.parseInt(arg) - USER_INDEX_OFFSET;
         } catch (NumberFormatException e) {
             throw new InvalidArgumentException(arg);
         }
