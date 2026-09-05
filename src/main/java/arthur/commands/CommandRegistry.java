@@ -36,11 +36,24 @@ public class CommandRegistry {
      * @return the command class
      */
     public static Command getCommand(String command) {
-        if (!registry.containsKey(command)) {
+        // Do a prefix search, e.g. "mar" will match "mark"
+        String currentCommand = null;
+        for (String name : registry.keySet()) {
+            if (!name.startsWith(command)) {
+                continue;
+            }
+            if (currentCommand != null) {
+                // If the command name is not unique, return null
+                return null;
+            }
+            currentCommand = name;
+        }
+        if (currentCommand == null) {
             return null;
         }
+
         try {
-            return registry.get(command).getDeclaredConstructor().newInstance();
+            return registry.get(currentCommand).getDeclaredConstructor().newInstance();
         } catch (ReflectiveOperationException e) {
             throw new InvalidCommandException(command);
         }
