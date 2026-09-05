@@ -2,7 +2,12 @@ name: Java CI
 
 on:
   push:
-    tags: [ A-*, B-*, C-*, D-*, Level-* ]
+    tags:
+      - A-*
+      - B-*
+      - C-*
+      - D-*
+      - Level-*
 
 jobs:
   build:
