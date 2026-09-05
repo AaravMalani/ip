@@ -18,7 +18,7 @@ public class DeadlineCommand extends Command {
     // AI-assisted: Added handling that creates and stores a task in the shared command context.
     public Message handle(CommandContext context, String arg) {
         Map<String, String> args = parseArgs(arg, "/by");
-        String description = args.get("").trim();
+        String description = args.get(UNNAMED_ARGUMENT).trim();
         LocalDateTime by = Utils.parseDateTime(args.get("/by").trim());
         Task task = new DeadlineTask(description, by);
         context.tasks().add(task);

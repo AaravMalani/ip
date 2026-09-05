@@ -9,7 +9,9 @@ import arthur.utils.Utils;
  * Represents a task that must be completed by a date.
  */
 public class DeadlineTask extends Task {
+    // AI-assisted: Named the deadline display format.
     private static final TaskType TASK_TYPE = TaskType.DEADLINE;
+    private static final String TASK_DISPLAY_FORMAT = "%s%s %s (by %s)";
     // AI-assisted: Added the deadline task type with a by date.
     private final LocalDateTime by;
 
@@ -31,6 +33,7 @@ public class DeadlineTask extends Task {
 
     @Override
     public String toString() {
-        return TASK_TYPE + getMarkedIcon() + " " + getDescription() + " (by " + Utils.formatDateTime(by) + ")";
+        return String.format(TASK_DISPLAY_FORMAT, TASK_TYPE, getMarkedIcon(), getDescription(),
+                Utils.formatDateTime(by));
     }
 }

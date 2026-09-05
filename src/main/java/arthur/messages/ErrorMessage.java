@@ -6,6 +6,10 @@ import arthur.exceptions.ArthurRuntimeException;
  * Displayed when a command throws an error
  */
 public class ErrorMessage extends Message {
+    // AI-assisted: Named the error-response format and its CSS class.
+    private static final String ERROR_RESPONSE_FORMAT = "%s\n%s";
+    private static final String ERROR_MESSAGE_CSS_CLASS = "error-message";
+
     private final ArthurRuntimeException exception;
 
     public ErrorMessage(ArthurRuntimeException exception) {
@@ -14,7 +18,7 @@ public class ErrorMessage extends Message {
 
     @Override
     public String toString() {
-        return String.format("%s\n%s", exception.getMessage(), getRandomQuote());
+        return String.format(ERROR_RESPONSE_FORMAT, exception.getMessage(), getRandomQuote());
     }
 
     @Override
@@ -24,6 +28,6 @@ public class ErrorMessage extends Message {
 
     @Override
     public String getClassName() {
-        return "error-message";
+        return ERROR_MESSAGE_CSS_CLASS;
     }
 }
