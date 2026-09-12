@@ -1,7 +1,5 @@
 package arthur.ui;
 
-import java.util.Objects;
-
 import arthur.commands.CommandHandler;
 import arthur.messages.Message;
 import arthur.messages.WelcomeMessage;
@@ -18,12 +16,12 @@ import javafx.scene.layout.VBox;
  */
 public class MainWindow extends AnchorPane {
     private static final Image[] ARTHUR_IMAGES = {
-            MainWindow.loadImage("/images/arthur1.jpg"),
-            MainWindow.loadImage("/images/arthur2.jpg"),
-            MainWindow.loadImage("/images/arthur3.jpg"),
-            MainWindow.loadImage("/images/arthur4.jpg")
+            Utils.loadImage("/images/arthur1.jpg"),
+            Utils.loadImage("/images/arthur2.jpg"),
+            Utils.loadImage("/images/arthur3.jpg"),
+            Utils.loadImage("/images/arthur4.jpg")
     };
-    private static final Image USER_IMAGE = MainWindow.loadImage("/images/user.png");
+    private static final Image USER_IMAGE = Utils.loadImage("/images/user.png");
 
     @FXML
     private ScrollPane scrollPane;
@@ -37,10 +35,6 @@ public class MainWindow extends AnchorPane {
 
 
     private int arthurImageIndex = 0;
-
-    private static Image loadImage(String image) {
-        return new Image(Objects.requireNonNull(MainWindow.class.getResourceAsStream(image)));
-    }
 
     /**
      * Initializes the MainWindow by setting up the scroll pane and displaying the welcome message.
