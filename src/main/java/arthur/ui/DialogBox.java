@@ -14,15 +14,25 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
-    // AI-assisted: Named the dialog layout resource and reply CSS class.
+    /*
+        AI-assisted:
+        * Named the dialog layout resource and reply CSS class.
+        * Loads the bundled JetBrains Mono font before FXML creates dialog labels.
+     */
     private static final String DIALOG_BOX_FXML = "/view/DialogBox.fxml";
+    private static final String DIALOG_FONT_RESOURCE = "/fonts/JetBrainsMono.ttf";
     private static final String REPLY_LABEL_CSS_CLASS = "reply-label";
+
+    static {
+        Font.loadFont(DialogBox.class.getResource(DIALOG_FONT_RESOURCE).toExternalForm(), -1);
+    }
 
     @FXML
     private Label dialog;
