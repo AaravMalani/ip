@@ -43,7 +43,7 @@ public class CommandHandler {
             * Replaced echo handling with registered add and list command handling.
             * Extracted command execution and final-message exit scheduling.
          */
-        Message message = executeCommand(command);
+        Message message = executeCommand(command.trim());
         storage.save(context);
         exitAfterDelayIfFinal(message);
         return message;
