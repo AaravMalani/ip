@@ -100,3 +100,95 @@ x -> todo
 ```
 
 Afterward, `x read book` works the same as `todo read book`.
+
+To view saved aliases, use `alias list`.
+
+```
+aliases:
+x -> todo
+```
+
+To remove an alias, use `alias remove /name x`.
+
+```
+alias removed:
+x
+```
+
+## Marking tasks as complete
+
+Marks a task as complete. Use the one-based task number shown by `list`.
+
+Format: `mark INDEX`
+
+Example: `mark 1`
+
+```
+marked:
+[T][X] read book
+```
+
+## Unmarking tasks
+
+Marks a completed task as incomplete again.
+
+Format: `unmark INDEX`
+
+Example: `unmark 1`
+
+```
+unmarked:
+[T][ ] read book
+```
+
+## Removing tasks
+
+Removes a task from the current list. Use the one-based task number shown by `list`.
+
+Format: `remove INDEX`
+
+Example: `remove 1`
+
+```
+removed:
+[T][ ] read book
+```
+
+## Finding tasks
+
+Displays tasks whose descriptions contain a keyword.
+
+Matching is case-sensitive. For example, `find report` matches `submit report` but not `Submit Report`.
+
+Format: `find KEYWORD`
+
+Example: `find report`
+
+```
+1. [D][ ] submit report (by Sep 15 2026 @ 14:30)
+```
+
+If no task matches, the application displays `No tasks to display.`
+
+## Filtering tasks by date
+
+Displays deadlines and events that occur on a particular calendar date. To-dos are not included in date filtering.
+
+Format: `filter /on yyyy-MM-dd`
+
+Example: `filter /on 2026-09-15`
+
+```
+1. [D][ ] submit report (by Sep 15 2026 @ 14:30)
+2. [E][ ] team meeting (from Sep 15 2026 @ 09:00, to Sep 15 2026 @ 10:00)
+```
+
+## Exiting the application
+
+Closes Arthur Dent after displaying a farewell message. There is a 1 second delay between the farewell message and the app closing.
+
+Format: `bye`
+
+```
+So long, and thanks for all the fish.
+```
