@@ -29,6 +29,7 @@ public abstract class Command {
 
     /**
      * Parses the arguments sent by the user into a map
+     *
      * @param arg the extra arguments sent by the user. For example, if the user sends "hello world john",
      *            arg will be "world john"
      * @param argNames the names of the arguments to parse (for example, "/world" and "/john")

@@ -11,6 +11,7 @@ public class Utils {
 
     /**
      * Loads an image from the resources folder.
+     *
      * @param image the path to the image
      * @return The image object
      * @throws NullPointerException if the image path is null

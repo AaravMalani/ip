@@ -29,6 +29,7 @@ public abstract class Message {
 
     /**
      * Returns the JavaFX CSS class name for this message
+     *
      * @return The class name for this message
      */
     public String getClassName() {

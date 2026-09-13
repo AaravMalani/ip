@@ -17,6 +17,7 @@ public class DeadlineTask extends Task {
 
     /**
      * Creates a new deadline task
+     *
      * @param description The description of the deadline task
      * @param by The deadline date of the deadline task
      */

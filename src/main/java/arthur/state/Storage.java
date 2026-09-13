@@ -29,6 +29,7 @@ public class Storage {
     /**
      * Loads the command context from the file.
      * If the file does not exist, a new command context is returned.
+     *
      * @return the command context
      */
     public CommandContext load() {
@@ -45,6 +46,7 @@ public class Storage {
 
     /**
      * Saves the command context to the file.
+     *
      * @param context the command context to save
      * @throws StorageException if an error occurs while saving the command context
      */
