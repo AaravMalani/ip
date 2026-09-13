@@ -1,5 +1,13 @@
 # Console UI Test Plan
 
+## Dialog font
+
+Aim: Verify that dialog labels render with the bundled JetBrains Mono font.
+
+Inputs: Launch the JavaFX application and submit a message.
+
+Expected result: The user and reply dialog labels use JetBrains Mono; console output is unchanged.
+
 ## Exit after a final message
 
 Aim: Verify that the application displays the farewell message and exits after the `bye` command.
