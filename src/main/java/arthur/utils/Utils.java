@@ -44,6 +44,7 @@ public class Utils {
         return dateTime.format(DATETIME_OUTPUT_FORMAT);
     }
 
+    // AI-assisted: Added ISO date parsing for the filter command.
     /**
      * Parses an ISO-8601 calendar date.
      *
@@ -51,7 +52,6 @@ public class Utils {
      * @return the parsed date.
      * @throws InvalidDateTimeException if the input is not a valid date.
      */
-    // AI-assisted: Added ISO date parsing for the filter command.
     public static LocalDate parseDate(String date) {
         try {
             return LocalDate.parse(date, DATE_INPUT_FORMAT);

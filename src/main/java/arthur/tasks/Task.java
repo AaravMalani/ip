@@ -57,13 +57,13 @@ public abstract class Task implements Serializable {
         this.isMarked = false;
     }
 
+    // AI-assisted: Added a date predicate for filtering dated tasks.
     /**
      * Returns whether this task occurs on the supplied date.
      *
      * @param date the date to check.
      * @return whether this task occurs on {@code date}.
      */
-    // AI-assisted: Added a date predicate for filtering dated tasks.
     public abstract boolean isOn(LocalDate date);
 
     /**

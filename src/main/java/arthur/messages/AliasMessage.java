@@ -65,12 +65,12 @@ public class AliasMessage extends Message {
         return String.format(ADD_CONFIRMATION_FORMAT, getRandomQuote(), alias, targetCommand);
     }
 
+    // AI-assisted: Sorted aliases by name to make list output predictable.
     /**
      * Formats stored aliases in a stable alphabetical order.
      *
      * @return the formatted aliases or an empty-list message.
      */
-    // AI-assisted: Sorted aliases by name to make list output predictable.
     private String formatAliases() {
         if (aliases.isEmpty()) {
             return NO_ALIASES;

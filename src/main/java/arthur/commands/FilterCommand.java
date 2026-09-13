@@ -14,6 +14,7 @@ import arthur.utils.Utils;
  * Lists tasks that occur on a requested date.
  */
 public class FilterCommand extends Command {
+    // AI-assisted: Added filtering of dated tasks for the /on argument.
     /**
      * Filters stored deadline and event tasks by the date supplied with {@code /on}.
      *
@@ -22,7 +23,6 @@ public class FilterCommand extends Command {
      * @return a message containing matching tasks.
      */
     @Override
-    // AI-assisted: Added filtering of dated tasks for the /on argument.
     public Message handle(CommandContext context, String arg) {
         Map<String, String> args = parseArgs(arg, "/on");
         LocalDate date = Utils.parseDate(args.get("/on").trim());

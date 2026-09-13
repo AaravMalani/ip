@@ -72,13 +72,13 @@ public class MainWindow extends AnchorPane {
         userInput.clear();
     }
 
+    // AI-assisted: Extracted conversation display updates from the input event handler.
     /**
      * Adds the user's input and Arthur's response to the conversation display.
      *
      * @param input    the user's submitted text.
      * @param response Arthur's response to the input.
      */
-    // AI-assisted: Extracted conversation display updates from the input event handler.
     private void displayConversation(String input, Message response) {
         dialogContainer.getChildren().addAll(
             DialogBox.getUserDialog(input, USER_IMAGE),

@@ -49,13 +49,13 @@ public class CommandHandler {
         return message;
     }
 
+    // AI-assisted: Extracted command lookup, argument parsing, and exception handling from handle.
     /**
      * Executes a command and converts command failures into displayable error messages.
      *
      * @param command the user-entered command.
      * @return the command response or an error response.
      */
-    // AI-assisted: Extracted command lookup, argument parsing, and exception handling from handle.
     private Message executeCommand(String command) {
         String commandName = command.split(COMMAND_SEPARATOR)[COMMAND_NAME_INDEX];
         Command commandInstance = CommandRegistry.getCommand(context, commandName);
@@ -73,12 +73,12 @@ public class CommandHandler {
         }
     }
 
+    // AI-assisted: Extracted delayed exit handling and started its background thread.
     /**
      * Starts a delayed application exit after a final message has been displayed.
      *
      * @param message the response returned by the command.
      */
-    // AI-assisted: Extracted delayed exit handling and started its background thread.
     private void exitAfterDelayIfFinal(Message message) {
         if (!message.isFinal()) {
             return;
