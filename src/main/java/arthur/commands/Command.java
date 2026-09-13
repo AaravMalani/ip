@@ -11,7 +11,7 @@ import arthur.state.CommandContext;
 
 /**
  * Represents an operation requested by the user.
- * It has one main function: the {@link Command#handle(CommandContext context, String arg)} method
+ * It has one main function: the {@link Command#handle(CommandContext context, String arg)} method.
  */
 public abstract class Command {
     // AI-assisted: Named parsing literals and exposed the key for unprefixed arguments to command classes.
@@ -19,7 +19,7 @@ public abstract class Command {
 
     private static final String ARGUMENT_SEPARATOR = " ";
     /**
-     * Handles a command
+     * Handles a command.
      *
      * @param context the shared command state.
      * @param arg the extra command arguments.
@@ -28,11 +28,12 @@ public abstract class Command {
     public abstract Message handle(CommandContext context, String arg);
 
     /**
-     * Parses the arguments sent by the user into a map
+     * Parses the arguments sent by the user into a map.
+     *
      * @param arg the extra arguments sent by the user. For example, if the user sends "hello world john",
-     *            arg will be "world john"
-     * @param argNames the names of the arguments to parse (for example, "/world" and "/john")
-     * @return a map of the arguments
+     *            arg will be "world john".
+     * @param argNames the names of the arguments to parse (for example, "/world" and "/john").
+     * @return a map of the arguments.
      */
     public Map<String, String> parseArgs(String arg, String... argNames) {
         String[] splits = arg.split(ARGUMENT_SEPARATOR);

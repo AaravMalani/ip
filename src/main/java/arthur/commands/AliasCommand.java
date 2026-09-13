@@ -11,17 +11,17 @@ import arthur.state.CommandContext;
  * Adds, removes, and lists user-defined command aliases.
  */
 public class AliasCommand extends Command {
-    /**
-     * Adds, removes, or lists aliases in the shared command context.
-     *
-     * @param context the shared command state
-     * @param arg     the alias operation and its arguments
-     * @return a confirmation message for the completed operation
-     */
     /*
         AI-assisted:
         * Added command-alias creation and removal without alias resolution.
         * Added display of stored command aliases without alias resolution.
+     */
+    /**
+     * Adds, removes, or lists aliases in the shared command context.
+     *
+     * @param context the shared command state.
+     * @param arg     the alias operation and its arguments.
+     * @return a confirmation message for the completed operation.
      */
     @Override
     public Message handle(CommandContext context, String arg) {
@@ -37,14 +37,14 @@ public class AliasCommand extends Command {
         };
     }
 
+    // AI-assisted: Parsed and stored an alias-to-command mapping.
     /**
      * Stores a new alias and its target command.
      *
-     * @param context the shared command state
-     * @param options the {@code /from} and {@code /to} arguments
-     * @return a confirmation message for the new alias
+     * @param context the shared command state.
+     * @param options the {@code /from} and {@code /to} arguments.
+     * @return a confirmation message for the new alias.
      */
-    // AI-assisted: Parsed and stored an alias-to-command mapping.
     private Message addAlias(CommandContext context, String options) {
         Map<String, String> args = parseArgs(options, "/from", "/to");
         String alias = args.get("/from").trim();
@@ -53,14 +53,14 @@ public class AliasCommand extends Command {
         return new AliasMessage(alias, command);
     }
 
+    // AI-assisted: Parsed and removed an alias mapping.
     /**
      * Removes an alias from the shared command context.
      *
-     * @param context the shared command state
-     * @param options the {@code /name} argument
-     * @return a confirmation message for the removed alias
+     * @param context the shared command state.
+     * @param options the {@code /name} argument.
+     * @return a confirmation message for the removed alias.
      */
-    // AI-assisted: Parsed and removed an alias mapping.
     private Message removeAlias(CommandContext context, String options) {
         Map<String, String> args = parseArgs(options, "/name");
         String alias = args.get("/name").trim();
@@ -71,13 +71,13 @@ public class AliasCommand extends Command {
         return new AliasMessage(alias);
     }
 
+    // AI-assisted: Added display of aliases stored in the command context.
     /**
      * Displays the aliases stored in the shared command context.
      *
-     * @param context the shared command state
-     * @return a message containing the stored aliases
+     * @param context the shared command state.
+     * @return a message containing the stored aliases.
      */
-    // AI-assisted: Added display of aliases stored in the command context.
     private Message listAliases(CommandContext context) {
         return new AliasMessage(context.commandAliases());
     }

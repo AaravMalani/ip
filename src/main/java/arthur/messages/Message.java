@@ -1,7 +1,7 @@
 package arthur.messages;
 
 /**
- * An abstract response type. It is serialized using {@link Message#toString()}
+ * An abstract response type. It is serialized using {@link Message#toString()}.
  */
 public abstract class Message {
     private static final String[] QUOTES = {
@@ -23,13 +23,14 @@ public abstract class Message {
     public abstract String toString();
 
     /**
-     * Returns true if the program should return after this message
+     * Returns true if the program should return after this message.
      */
     public abstract boolean isFinal();
 
     /**
-     * Returns the JavaFX CSS class name for this message
-     * @return The class name for this message
+     * Returns the JavaFX CSS class name for this message.
+     *
+     * @return The class name for this message.
      */
     public String getClassName() {
         return "";

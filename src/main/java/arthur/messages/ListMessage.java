@@ -21,7 +21,7 @@ public class ListMessage extends Message {
     /**
      * Creates a message that displays the supplied tasks.
      *
-     * @param tasks the tasks to display
+     * @param tasks the tasks to display.
      */
     public ListMessage(List<Task> tasks) {
         this.tasks = tasks;

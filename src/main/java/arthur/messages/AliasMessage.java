@@ -25,8 +25,8 @@ public class AliasMessage extends Message {
     /**
      * Creates a message confirming an added alias.
      *
-     * @param alias         the alias name
-     * @param targetCommand the command mapped to the alias
+     * @param alias         the alias name.
+     * @param targetCommand the command mapped to the alias.
      */
     public AliasMessage(String alias, String targetCommand) {
         this.alias = alias;
@@ -37,7 +37,7 @@ public class AliasMessage extends Message {
     /**
      * Creates a message confirming a removed alias.
      *
-     * @param alias the alias name
+     * @param alias the alias name.
      */
     public AliasMessage(String alias) {
         this(alias, null);
@@ -46,7 +46,7 @@ public class AliasMessage extends Message {
     /**
      * Creates a message displaying a snapshot of stored aliases.
      *
-     * @param aliases the aliases to display
+     * @param aliases the aliases to display.
      */
     public AliasMessage(Map<String, String> aliases) {
         this.alias = null;
@@ -65,12 +65,12 @@ public class AliasMessage extends Message {
         return String.format(ADD_CONFIRMATION_FORMAT, getRandomQuote(), alias, targetCommand);
     }
 
+    // AI-assisted: Sorted aliases by name to make list output predictable.
     /**
      * Formats stored aliases in a stable alphabetical order.
      *
-     * @return the formatted aliases or an empty-list message
+     * @return the formatted aliases or an empty-list message.
      */
-    // AI-assisted: Sorted aliases by name to make list output predictable.
     private String formatAliases() {
         if (aliases.isEmpty()) {
             return NO_ALIASES;

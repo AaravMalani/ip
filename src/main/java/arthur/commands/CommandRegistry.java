@@ -33,11 +33,11 @@ public class CommandRegistry {
 
 
     /**
-     * Gets the command class from the registry by command name
+     * Gets the command class from the registry by command name.
      *
-     * @param context the command context
-     * @param command the name of the command to get
-     * @return the command class
+     * @param context the command context.
+     * @param command the name of the command to get.
+     * @return the command class.
      */
     public static Command getCommand(CommandContext context, String command) {
         String currentCommand = null;
@@ -70,10 +70,10 @@ public class CommandRegistry {
     }
 
     /**
-     * Gets the command name from the registry by command class
+     * Gets the command name from the registry by command class.
      *
-     * @param c the command class to get
-     * @return the command name
+     * @param c the command class to get.
+     * @return the command name.
      */
     public static String getCommandName(Class<? extends Command> c) {
         if (!registryInv.containsKey(c)) {

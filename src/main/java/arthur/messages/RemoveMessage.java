@@ -13,7 +13,7 @@ public class RemoveMessage extends Message {
     private final Task task;
 
     /**
-     * Confirmation message for removing a task.
+     * Creates a confirmation message for removing a task.
      *
      * @param task The task that was removed.
      */

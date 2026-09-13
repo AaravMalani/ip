@@ -6,18 +6,17 @@ import java.util.HashMap;
 
 import arthur.tasks.Task;
 
+// AI-assisted: Added shared task storage for the add and list commands.
 /**
  * Stores the shared state that commands need during a program session.
  */
-// AI-assisted: Added shared task storage for the add and list commands.
 public record CommandContext(ArrayList<Task> tasks, HashMap<String, String> commandAliases) implements Serializable {
     public CommandContext() {
         this(new ArrayList<>(), new HashMap<>());
     }
 
     /**
-     * During deserialization from an old version, some fields may be missing.
-     * This method ensures that all fields are initialized.
+     * Returns a command context with all collections initialized.
      *
      * @return A new CommandContext with all fields initialized.
      */

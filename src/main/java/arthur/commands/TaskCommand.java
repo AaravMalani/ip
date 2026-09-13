@@ -16,11 +16,11 @@ public abstract class TaskCommand extends Command {
     protected abstract String getCommandName();
 
     /**
-     * Handles a task command
+     * Handles a task command.
      *
-     * @param context The command context
-     * @param index   The 0-based index of the task to handle
-     * @return The message to display to the user
+     * @param context The command context.
+     * @param index   The 0-based index of the task to handle.
+     * @return The message to display to the user.
      */
     protected abstract Message handle(CommandContext context, int index);
 
