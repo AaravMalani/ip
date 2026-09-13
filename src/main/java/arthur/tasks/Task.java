@@ -44,14 +44,14 @@ public abstract class Task implements Serializable {
     }
 
     /**
-     * Mark the task as done.
+     * Marks the task as done.
      */
     public void mark() {
         this.isMarked = true;
     }
 
     /**
-     * Unmark the task.
+     * Unmarks the task.
      */
     public void unmark() {
         this.isMarked = false;

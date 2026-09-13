@@ -16,8 +16,7 @@ public record CommandContext(ArrayList<Task> tasks, HashMap<String, String> comm
     }
 
     /**
-     * During deserialization from an old version, some fields may be missing.
-     * This method ensures that all fields are initialized.
+     * Returns a command context with all collections initialized.
      *
      * @return A new CommandContext with all fields initialized.
      */

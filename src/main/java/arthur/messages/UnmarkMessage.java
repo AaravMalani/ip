@@ -13,7 +13,7 @@ public class UnmarkMessage extends Message {
     private final Task task;
 
     /**
-     * Confirmation message for unmarking a task.
+     * Creates a confirmation message for unmarking a task.
      *
      * @param task The task that was unmarked.
      */
