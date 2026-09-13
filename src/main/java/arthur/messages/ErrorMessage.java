@@ -3,7 +3,7 @@ package arthur.messages;
 import arthur.exceptions.ArthurRuntimeException;
 
 /**
- * Displayed when a command throws an error
+ * Displayed when a command throws an error.
  */
 public class ErrorMessage extends Message {
     // AI-assisted: Named the error-response format and its CSS class.

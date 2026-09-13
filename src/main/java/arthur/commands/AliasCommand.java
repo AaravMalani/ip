@@ -14,9 +14,9 @@ public class AliasCommand extends Command {
     /**
      * Adds, removes, or lists aliases in the shared command context.
      *
-     * @param context the shared command state
-     * @param arg     the alias operation and its arguments
-     * @return a confirmation message for the completed operation
+     * @param context the shared command state.
+     * @param arg     the alias operation and its arguments.
+     * @return a confirmation message for the completed operation.
      */
     /*
         AI-assisted:
@@ -40,9 +40,9 @@ public class AliasCommand extends Command {
     /**
      * Stores a new alias and its target command.
      *
-     * @param context the shared command state
-     * @param options the {@code /from} and {@code /to} arguments
-     * @return a confirmation message for the new alias
+     * @param context the shared command state.
+     * @param options the {@code /from} and {@code /to} arguments.
+     * @return a confirmation message for the new alias.
      */
     // AI-assisted: Parsed and stored an alias-to-command mapping.
     private Message addAlias(CommandContext context, String options) {
@@ -56,9 +56,9 @@ public class AliasCommand extends Command {
     /**
      * Removes an alias from the shared command context.
      *
-     * @param context the shared command state
-     * @param options the {@code /name} argument
-     * @return a confirmation message for the removed alias
+     * @param context the shared command state.
+     * @param options the {@code /name} argument.
+     * @return a confirmation message for the removed alias.
      */
     // AI-assisted: Parsed and removed an alias mapping.
     private Message removeAlias(CommandContext context, String options) {
@@ -74,8 +74,8 @@ public class AliasCommand extends Command {
     /**
      * Displays the aliases stored in the shared command context.
      *
-     * @param context the shared command state
-     * @return a message containing the stored aliases
+     * @param context the shared command state.
+     * @return a message containing the stored aliases.
      */
     // AI-assisted: Added display of aliases stored in the command context.
     private Message listAliases(CommandContext context) {

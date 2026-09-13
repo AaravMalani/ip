@@ -14,9 +14,9 @@ public class FindCommand extends Command {
     /**
      * Find tasks that contain the keyword supplied through {@code arg}.
      *
-     * @param context the shared command state
-     * @param arg command arguments containing the keyword
-     * @return a message containing matching tasks
+     * @param context the shared command state.
+     * @param arg command arguments containing the keyword.
+     * @return a message containing matching tasks.
      */
     @Override
     public Message handle(CommandContext context, String arg) {

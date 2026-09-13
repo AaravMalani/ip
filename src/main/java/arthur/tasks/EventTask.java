@@ -17,11 +17,11 @@ public class EventTask extends Task {
     private final LocalDateTime to;
 
     /**
-     * Creates a new event task
+     * Creates a new event task.
      *
-     * @param description The description of the event task
-     * @param from The start date of the event task
-     * @param to The end date of the event task
+     * @param description The description of the event task.
+     * @param from The start date of the event task.
+     * @param to The end date of the event task.
      */
     public EventTask(String description, LocalDateTime from, LocalDateTime to) {
         super(description);

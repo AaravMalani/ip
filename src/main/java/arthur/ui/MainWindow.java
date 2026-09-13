@@ -51,7 +51,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Injects the CommandHandler instance
+     * Injects the CommandHandler instance.
      */
     public void setHandler(CommandHandler handler) {
         this.handler = handler;
@@ -75,8 +75,8 @@ public class MainWindow extends AnchorPane {
     /**
      * Adds the user's input and Arthur's response to the conversation display.
      *
-     * @param input    the user's submitted text
-     * @param response Arthur's response to the input
+     * @param input    the user's submitted text.
+     * @param response Arthur's response to the input.
      */
     // AI-assisted: Extracted conversation display updates from the input event handler.
     private void displayConversation(String input, Message response) {

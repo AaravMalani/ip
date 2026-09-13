@@ -15,7 +15,7 @@ public class AddMessage extends Message {
     /**
      * Creates a confirmation message for a task.
      *
-     * @param task the task that was added
+     * @param task the task that was added.
      */
     public AddMessage(Task task) {
         this.task = task;

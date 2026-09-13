@@ -19,7 +19,7 @@ public abstract class Task implements Serializable {
     /**
      * Creates a task with the supplied description.
      *
-     * @param description the text describing the task
+     * @param description the text describing the task.
      */
     public Task(String description) {
         this.description = description;
@@ -28,7 +28,7 @@ public abstract class Task implements Serializable {
     /**
      * Returns the icon representing whether this task is marked.
      *
-     * @return {@code [X]} for a marked task, otherwise {@code [ ]}
+     * @return {@code [X]} for a marked task, otherwise {@code [ ]}.
      */
     protected String getMarkedIcon() {
         return isMarked ? "[X]" : "[ ]";
@@ -37,21 +37,21 @@ public abstract class Task implements Serializable {
     /**
      * Returns this task's description for subclass display formatting.
      *
-     * @return the task description
+     * @return the task description.
      */
     protected String getDescription() {
         return description;
     }
 
     /**
-     * Mark the task as done
+     * Mark the task as done.
      */
     public void mark() {
         this.isMarked = true;
     }
 
     /**
-     * Unmark the task
+     * Unmark the task.
      */
     public void unmark() {
         this.isMarked = false;
@@ -60,8 +60,8 @@ public abstract class Task implements Serializable {
     /**
      * Returns whether this task occurs on the supplied date.
      *
-     * @param date the date to check
-     * @return whether this task occurs on {@code date}
+     * @param date the date to check.
+     * @return whether this task occurs on {@code date}.
      */
     // AI-assisted: Added a date predicate for filtering dated tasks.
     public abstract boolean isOn(LocalDate date);
@@ -69,8 +69,8 @@ public abstract class Task implements Serializable {
     /**
      * Returns whether the description of this task contains the supplied keyword.
      *
-     * @param keyword the keyword to check
-     * @return whether the description contains {@code keyword}
+     * @param keyword the keyword to check.
+     * @return whether the description contains {@code keyword}.
      */
     public boolean contains(String keyword) {
         return description.contains(keyword);
