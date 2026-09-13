@@ -16,6 +16,7 @@ import arthur.messages.UnmarkMessage;
 import arthur.state.CommandContext;
 
 public class CommandHandlerTest {
+    // AI-assisted: Cover whitespace normalization and invalid-command error responses.
     @Test
     public void handle_taskLifecycleCommands_returnsExpectedResponses() {
         CommandContext context = new CommandContext();
@@ -36,5 +37,19 @@ public class CommandHandlerTest {
 
         assertInstanceOf(ErrorMessage.class, handler.handle("unknown"));
         assertInstanceOf(AddMessage.class, handler.handle("todo read book"));
+    }
+
+    @Test
+    public void handle_commandWithSurroundingWhitespace_executesCommand() {
+        CommandHandler handler = new CommandHandler(new CommandContext(), new InMemoryStorage());
+
+        assertInstanceOf(AddMessage.class, handler.handle("  todo read book  "));
+    }
+
+    @Test
+    public void handle_emptyCommand_returnsErrorMessage() {
+        CommandHandler handler = new CommandHandler(new CommandContext(), new InMemoryStorage());
+
+        assertInstanceOf(ErrorMessage.class, handler.handle("   "));
     }
 }
