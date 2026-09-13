@@ -3,6 +3,7 @@ package arthur.commands;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import arthur.exceptions.InvalidArgumentException;
 import arthur.messages.AddMessage;
 import arthur.messages.Message;
 import arthur.state.CommandContext;
@@ -21,6 +22,12 @@ public class EventCommand extends Command {
         String description = args.get(UNNAMED_ARGUMENT).trim();
         LocalDateTime from = Utils.parseDateTime(args.get("/from").trim());
         LocalDateTime to = Utils.parseDateTime(args.get("/to").trim());
+        if (to.isBefore(LocalDateTime.now())) {
+            throw new InvalidArgumentException(args.get("/to"), "Event cannot be in the past");
+        }
+        if (from.isAfter(to)) {
+            throw new InvalidArgumentException(args.get("/from"), "Event cannot start after it ends");
+        }
         Task task = new EventTask(description, from, to);
         context.tasks().add(task);
         return new AddMessage(task);

@@ -3,6 +3,7 @@ package arthur.commands;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import arthur.exceptions.InvalidArgumentException;
 import arthur.messages.AddMessage;
 import arthur.messages.Message;
 import arthur.state.CommandContext;
@@ -20,6 +21,9 @@ public class DeadlineCommand extends Command {
         Map<String, String> args = parseArgs(arg, "/by");
         String description = args.get(UNNAMED_ARGUMENT).trim();
         LocalDateTime by = Utils.parseDateTime(args.get("/by").trim());
+        if (by.isBefore(LocalDateTime.now())) {
+            throw new InvalidArgumentException(args.get("/by"), "Deadline cannot be in the past");
+        }
         Task task = new DeadlineTask(description, by);
         context.tasks().add(task);
         return new AddMessage(task);

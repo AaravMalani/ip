@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import javafx.scene.image.Image;
 
+/**
+ * Utility methods for the UI.
+ */
 public class Utils {
 
     /**
