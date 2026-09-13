@@ -53,6 +53,12 @@ public class UtilsTest {
         assertThrows(InvalidDateTimeException.class, () -> Utils.parseDateTime("2026-09-15 1430a"));
     }
 
+    // AI-assisted: Verify the date-time display formatter used by dated tasks.
+    @Test
+    public void formatDateTime_validInput_returnsDisplayFormat() {
+        assertEquals("Sep 15 2026 @ 14:30", Utils.formatDateTime(LocalDateTime.of(2026, 9, 15, 14, 30)));
+    }
+
     // AI-assisted: Separate date parsing scenarios for clear failure reporting.
     @Test
     public void parseDate_validLeapDay_returnsParsedDate() {

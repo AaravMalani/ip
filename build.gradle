@@ -3,6 +3,7 @@ plugins {
     id 'application'
     id 'com.gradleup.shadow' version '9.5.1'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 checkstyle {
@@ -74,4 +75,15 @@ shadowJar {
 
 run {
     standardInput = System.in
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
 }

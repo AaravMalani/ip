@@ -1,6 +1,7 @@
 package arthur;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 import arthur.commands.CommandHandler;
 import arthur.state.CommandContext;
@@ -18,8 +19,13 @@ import javafx.stage.Stage;
  * Starts the Arthur application.
  */
 public class ArthurDent extends Application {
-    // AI-assisted: Named the minimum window dimensions and main layout resource.
+    /*
+        AI-assisted:
+        * Named the minimum window dimensions and main layout resource.
+        * Moved the application storage path out of Storage for constructor injection.
+     */
     private static final String MAIN_WINDOW_FXML = "/view/MainWindow.fxml";
+    private static final Path STORAGE_FILE_PATH = Path.of("./data/arthur.bin");
     private static final Image LOGO = Utils.loadImage("/images/arthur3.jpg");
     private static final double MINIMUM_WINDOW_HEIGHT = 220;
     private static final double MINIMUM_WINDOW_WIDTH = 417;
@@ -27,7 +33,7 @@ public class ArthurDent extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Storage storage = new Storage();
+            Storage storage = new Storage(STORAGE_FILE_PATH);
             CommandContext context = storage.load();
             CommandHandler handler = new CommandHandler(context, storage);
 
